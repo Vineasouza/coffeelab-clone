@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap");
 
+
 img {
   max-width: 100%;
   height: auto;
@@ -60,6 +61,92 @@ header {
 
 .placeholder {
   height: 100vh;
+}
+
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
+}
+
+.header-img-logo {
+  width: auto;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: max-content;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav-title-lab {
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #000000;
+  padding: 1.6px;
+  margin-right: 3px;
+}
+
+.header-nav-title {
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #000000;
+  padding: 1.6px;
+  margin-right: 3px;
+  text-decoration: none;
+}
+
+.container {
+  margin-top: 4vw;
+  margin-bottom: 4vw;
+  margin-left: 4vw;
+  margin-right: 4vw;
+}
+
+.imgcontainer {
+  background-image: url("/img/img-background.jpg");
+  background-size: cover;
+  align-items: center;
+  padding-top: 4vw;
+  padding-right: 4vw;
+  padding-bottom: 4vw;
+  padding-left: 4vw;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 10vmax;
+  padding-bottom: 10vmax;
+  padding-right: 6vw;
+  padding-left: 6vw;
+  box-sizing: border-box;
+}
+
+.content-text {
+  font-family: "Space Mono";
+  font-weight: 700;
+  font-size: 46px;
+  line-height: 59px;
+  color: #ffffff;
+  overflow-wrap: break-word;
 }
 
 @keyframes fade-in {
