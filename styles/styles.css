@@ -19,6 +19,72 @@ header {
   min-height: 100vh;
 }
 
+.header {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.header-img-logo-wrapper {
+  width: 50px;
+  height: 50px;
+  margin-right: 36px;
+  position: relative;
+}
+
+.header-img-logo {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  animation: fade-in-button 1s forwards;
+}
+
+.header-nav {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: max-content;
+  justify-content: space-between;
+  align-items: center;
+  animation: fade-in-nav 1s;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+}
+
+.header-nav-title-lab {
+  font-weight: 400;
+  padding: 1.6px;
+  font-size: 16px;
+  line-height: 27px;
+  color: #000000;
+  padding: 0.1em 0;
+  margin-right: 9px;
+  border-bottom: 0.9px solid #000;
+  margin-bottom: 1px;
+  text-decoration: none;
+}
+
+.header-nav-title {
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  color: #000000;
+  padding: 1.6px;
+  margin-right: 9px;
+  margin-left: 6px;
+  text-decoration: none;
+}
+
 .actions-container {
   width: fit-content;
   height: 28px;
@@ -51,6 +117,20 @@ a {
   line-height: 0;
   padding: 0;
   margin: 0;
+}
+
+.menu-button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-button-container button {
+  margin: 80px 0 0 0;
+  width: 210px;
+  height: 42px;
+  font-size: 19.2px;
 }
 
 .login-button {
@@ -90,72 +170,6 @@ a {
 
 .placeholder {
   height: 100vh;
-}
-
-.header {
-  width: 100%;
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.header-img-logo-wrapper {
-  width: 50px;
-  height: 50px;
-  margin-right: 36px;
-  position: relative;
-}
-
-.header-img-logo {
-  width: 50px;
-  height: 50px;
-  position: absolute;
-  animation: fade-in-button 1s forwards;
-}
-
-.header-title-wrapper {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-}
-
-.header-nav {
-  display: inline-flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  width: max-content;
-  justify-content: space-between;
-  align-items: center;
-  animation: fade-in-nav 1s;
-  position: absolute;
-  top: 10px;
-  left: 100px;
-}
-
-.header-nav-title-lab {
-  font-weight: 400;
-  padding: 1.6px;
-  font-size: 16px;
-  line-height: 27px;
-  color: #000000;
-  padding: 0.1em 0;
-  margin-right: 9px;
-  border-bottom: 0.9px solid #000;
-  margin-bottom: 1px;
-  text-decoration: none;
-}
-
-.header-nav-title {
-  font-family: "Space Mono";
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 27px;
-  color: #000000;
-  padding: 1.6px;
-  margin-right: 9px;
-  margin-left: 6px;
-  text-decoration: none;
 }
 
 .header-nav-menu {
@@ -278,10 +292,6 @@ a {
   background-color: transparent;
   border: none;
   padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .container-menu {
@@ -339,6 +349,8 @@ a {
 
   .burger-toggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
     width: 35px;
     height: fit-content;
@@ -390,18 +402,4 @@ a {
   margin: 8px;
   width: 24px;
   height: 24px;
-}
-
-.menu-button-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu-button-container button {
-  margin: 80px 0 0 0;
-  width: 210px;
-  height: 42px;
-  font-size: 19.2px;
 }
