@@ -39,6 +39,20 @@ a {
   margin: 0;
 }
 
+.social-icon-container-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+.social-icon-container-menu,
+a {
+  line-height: 0;
+  padding: 0;
+  margin: 0;
+}
+
 .login-button {
   height: 32px;
 
@@ -144,8 +158,20 @@ a {
   text-decoration: none;
 }
 
+.header-nav-menu {
+  font-family: "Space Mono";
+  font-weight: 400;
+  font-size: 6.5vw;
+  line-height: inherit;
+  color: #000000;
+  padding: 1.6px;
+  margin-right: 9px;
+  margin-left: 6px;
+  text-decoration: none;
+}
+
 .container {
-  width: 92vw;
+  width: calc(100% - 8vw);
   height: calc(100vh - 10vw - 50px);
   margin-bottom: 4vw;
   margin-left: 4vw;
@@ -154,12 +180,20 @@ a {
   position: relative;
 }
 
+.nav-menu {
+  height: 74%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .img {
   object-position: 50% 50%;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter:brightness(0.85);
+  filter: brightness(0.85);
 }
 
 .content-wrapper {
@@ -179,11 +213,20 @@ a {
 .content-text {
   font-family: "Space Mono";
   font-weight: 700;
-  font-size:  calc(1.8 * 1.2vw + 1rem);
+  font-size: calc(1.8 * 1.2vw + 1rem);
   line-height: 59px;
   color: #ffffff;
   overflow-wrap: break-word;
   text-align: center;
+}
+
+@keyframes fade-in-menu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-in-button {
@@ -230,11 +273,36 @@ a {
   }
 }
 
-.burguer-toggle {
+.burger-toggle {
   display: none;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-menu {
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 2;
+  position: absolute;
+
+  opacity: 0;
+  background-color: white;
+
+  animation: fade-in-menu 0.5s ease forwards;
 }
 
 @media screen and (max-width: 810px) {
+  .header {
+    height: 18vw;
+    padding: 4vw 6vw;
+  }
+
   .header-nav,
   .actions-container {
     display: none;
@@ -259,6 +327,7 @@ a {
 
   .container {
     height: calc(100vh - 10vw - 32px);
+    position: relative;
   }
 
   .img {
@@ -268,20 +337,71 @@ a {
     object-fit: cover;
   }
 
-  .burguer-toggle {
+  .burger-toggle {
     display: flex;
     flex-direction: column;
     width: 35px;
     height: fit-content;
+    cursor: pointer;
+    position: relative;
   }
 
   .line-space {
-    height: 14px;
+    height: 8px;
+    display: none;
+    transition: all 1s ease;
   }
 
-  .line-menu {
+  .first-line-menu {
     width: 100%;
     height: 2px;
     background-color: rgb(121, 119, 119);
+    transition: all 0.3s ease;
   }
+
+  .second-line-menu {
+    width: 100%;
+    height: 2px;
+    background-color: rgb(121, 119, 119);
+    transition: all 0.3s ease;
+  }
+}
+
+.line-rotation-clockwise {
+  transform: rotate(45deg);
+}
+
+.line-rotation-anticlockwise {
+  transform: rotate(-45deg);
+}
+
+.visible {
+  display: block;
+}
+
+.social-icon-container-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+}
+
+.social-icon-container-menu img {
+  margin: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.menu-button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-button-container button {
+  margin: 80px 0 0 0;
+  width: 210px;
+  height: 42px;
+  font-size: 19.2px;
 }
