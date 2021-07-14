@@ -1,5 +1,3 @@
-# coffeelab-clone
-
 ## Clone do site CoffeeLab para fins acadêmicos
 
 <div style="text-align:center; display: flex; flex-direction: row;" >
