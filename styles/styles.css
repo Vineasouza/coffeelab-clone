@@ -234,59 +234,6 @@ a {
   text-align: center;
 }
 
-@keyframes fade-in-menu {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-button {
-  from {
-    opacity: 0;
-    top: 50%;
-  }
-  to {
-    opacity: 1;
-    top: 0;
-  }
-}
-
-@keyframes fade-in-nav {
-  from {
-    opacity: 0;
-    top: 50%;
-  }
-  to {
-    opacity: 1;
-    top: 10px;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    top: 10%;
-  }
-  to {
-    opacity: 1;
-    top: 0%;
-  }
-}
-
-@keyframes fade-in-logo {
-  from {
-    opacity: 0;
-    top: 60%;
-  }
-  to {
-    opacity: 1;
-    top: 50%;
-  }
-}
-
 .burger-toggle {
   display: none;
   background-color: transparent;
@@ -402,4 +349,183 @@ a {
   margin: 8px;
   width: 24px;
   height: 24px;
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000070;
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  animation: fade-in-simple 0.3s ease;
+}
+
+.modal-content {
+  width: 350px;
+  height: 400px;
+  background-color: #ffffff;
+}
+
+.modal-header {
+  width: 100%;
+  height: 92px;
+
+  background-color: #000;
+  position: relative;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-title {
+  width: 290px;
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.input-login {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  position: relative;
+
+  font-family: "Space mono";
+  font-size: 1;
+
+  width: 100%;
+  height: calc(100% - 92px);
+}
+
+.modal-close-button {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+  padding-right: 12px;
+
+  background-color: transparent;
+  border: none;
+
+  color: #ffffff;
+  font-family: "Space Mono";
+
+  cursor: pointer;
+  font-size: large;
+}
+
+.modal-button {
+  width: 100%;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid black;
+  background-color: white;
+
+  border-radius: 6px;
+  padding: 18px;
+
+  font-size: 1em;
+
+  cursor: pointer;
+
+  transition: background-color 0.1s linear, color 0.1s linear;
+  animation: fade-in-button 1s forwards;
+  margin-top: 32px;
+}
+
+.modal-button:hover {
+  background-color: black;
+
+  color: white;
+}
+
+.modal-button:active {
+  background-color: #00000080;
+}
+.login-email,
+.login-password {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 20px;
+  padding: 0 12px;
+}
+
+@keyframes fade-in-menu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-button {
+  from {
+    opacity: 0;
+    top: 50%;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes fade-in-nav {
+  from {
+    opacity: 0;
+    top: 50%;
+  }
+  to {
+    opacity: 1;
+    top: 10px;
+  }
+}
+
+@keyframes fade-in-simple {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    top: 10%;
+  }
+  to {
+    opacity: 1;
+    top: 0%;
+  }
+}
+
+@keyframes fade-in-logo {
+  from {
+    opacity: 0;
+    top: 60%;
+  }
+  to {
+    opacity: 1;
+    top: 50%;
+  }
 }
