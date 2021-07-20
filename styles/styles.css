@@ -64,7 +64,6 @@ header {
   font-weight: 400;
   padding: 1.6px;
   font-size: 16px;
-  line-height: 27px;
   color: #000000;
   padding: 0.1em 0;
   margin-right: 9px;
@@ -77,7 +76,6 @@ header {
   font-family: "Space Mono";
   font-weight: 400;
   font-size: 16px;
-  line-height: 27px;
   color: #000000;
   padding: 1.6px;
   margin-right: 9px;
@@ -358,12 +356,14 @@ a {
   position: absolute;
   top: 0;
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 
   animation: fade-in-simple 0.3s ease;
   transition: all 0.5s ease-in;
+
+  overflow: hidden;
 }
 
 .modal-content {
@@ -480,6 +480,157 @@ a {
 
 .input-error {
   border: 2px solid red;
+}
+
+.card-container {
+  width: 415px;
+  height: 415px;
+
+  background-color: #000;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 32px;
+  overflow: hidden;
+}
+
+.card-content-wrapper {
+  width: 415px;
+  height: 415px;
+
+  background-color: #000;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 32px;
+
+  position: relative;
+}
+
+.card-title-english {
+  font-family: "Space Mono";
+  font-size: 28px;
+  text-align: center;
+  font-weight: 300;
+
+  color: #ffffff;
+}
+
+.card-divisor {
+  width: 45px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 16px 0;
+}
+
+.card-title-japanese {
+  font-family: "Space Mono";
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.445em;
+
+  color: #ffffff;
+
+  color: #ffffff;
+}
+
+.card-title-japanese-romanji {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-release-date {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-description {
+  width: 375px;
+
+  font-family: Space Mono;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: center;
+
+  color: #ffffff;
+
+  margin: 16px 0;
+}
+
+.card-film-label {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-director {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-poster {
+  width: 415px;
+  height: 415px;
+
+  position: absolute;
+  object-fit: cover;
+  object-position: 0 90%;
+
+  border-radius: 8px;
+
+  transition: all 0.5s;
+  animation: breathing 5s infinite ease-in-out;
+
+  overflow: hidden;
+  filter: blur(0.3px);
+}
+
+.card-film-poster:hover {
+  opacity: 0.15;
+  filter: blur(5px);
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes fade-in-menu {

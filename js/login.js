@@ -125,6 +125,8 @@ const login = () => {
 
       modalContainer.style.display = "none";
       modalLoginButton.innerHTML = "Entrar";
+
+      fetchFilmsPosters(["castle in the sky"]).then((r) => console.log(r));
     } else if (xmlhttp.status === 400) {
       // Login mal-sucedido -> Exibindo mensagem de erro e revertendo botão 'Carregando...' para 'Entrar'
 
