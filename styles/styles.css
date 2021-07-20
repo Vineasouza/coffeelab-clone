@@ -363,11 +363,12 @@ a {
   align-items: center;
 
   animation: fade-in-simple 0.3s ease;
+  transition: all 0.5s ease-in;
 }
 
 .modal-content {
   width: 350px;
-  height: 400px;
+  min-height: 400px;
   background-color: #ffffff;
 }
 
@@ -466,6 +467,19 @@ a {
   min-height: 40px;
   margin-bottom: 20px;
   padding: 0 12px;
+  transition: all 0.5s ease-in;
+}
+
+.login-error-message {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: red;
+  transition: all 0.5s ease-in;
+}
+
+.input-error {
+  border: 2px solid red;
 }
 
 @keyframes fade-in-menu {
