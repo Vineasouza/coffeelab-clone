@@ -32,6 +32,8 @@ modalLoginButton.onclick = () => {
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
       console.log("Loggado");
+      loginButton.innerHTML = "sair";
+      modalContainer.style.display = "none";
     } else {
       console.log(xmlhttp.responseText);
     }
