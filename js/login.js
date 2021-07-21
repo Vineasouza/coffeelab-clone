@@ -4,6 +4,9 @@ const modalCloseButton = document.querySelector(".modal-close-button");
 const modalLoginButton = document.querySelector(".modal-button");
 const emailValue = document.querySelector(".login-email").value;
 const passwordValue = document.querySelector(".login-password").value;
+const imgBackground = document.querySelector(".img");
+const contentWrapper = document.querySelector(".content-wrapper");
+const searchContainer = document.querySelector(".search-container");
 
 // Quando clicar no botao "Area do Aluno", abre o modal de login
 loginButton.onclick = () => {
@@ -79,6 +82,9 @@ const logout = () => {
   loginButton.onclick = () => {
     modalContainer.style.display = "flex";
   };
+  imgBackground.style.display = "initial";
+  contentWrapper.style.display = "flex";
+  searchContainer.style.diplay = "none";
 };
 
 // Função de login
@@ -125,6 +131,10 @@ const login = () => {
 
       modalContainer.style.display = "none";
       modalLoginButton.innerHTML = "Entrar";
+
+      searchContainer.style.display = "flex";
+      imgBackground.style.display = "none";
+      contentWrapper.style.display = "none";
 
       fetchFilmsPosters(["castle in the sky"]).then((r) => console.log(r));
     } else if (xmlhttp.status === 400) {

@@ -222,6 +222,75 @@ a {
   padding: 6vw;
 }
 
+.search-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background-color: #ffffff;
+}
+
+.search-header {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.search-text-title {
+  font-family: "Space Mono";
+  font-size: 36px;
+  color: #000000;
+  text-align: center;
+}
+
+.search-text-content {
+  font-family: "Space Mono";
+  flex-wrap: wrap;
+  font-size: 24px;
+  color: #000000;
+  text-align: center;
+}
+
+.search-input {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 40%;
+  min-width: 200px;
+  height: 40px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.search-span {
+  display: none;
+  color: red;
+  font-size: 16px;
+}
+
+/* Div search-await-results */
+.search-await-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.search-await-result-img {
+  width: 150px;
+  margin: 10px;
+}
+
+.search-text-await-result {
+  font-family: "Space Mono";
+  flex-wrap: wrap;
+  font-size: 18px;
+  color: #000000;
+  text-align: center;
+}
+
 .content-text {
   font-family: "Space Mono";
   font-weight: 700;

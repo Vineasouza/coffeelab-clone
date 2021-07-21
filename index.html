@@ -92,6 +92,31 @@
             <button class="login-button">área do aluno</button>
           </div>
         </div>
+        <div class="search-container">
+          <div class="search-header">
+            <p class="search-text-title">Olá, Lorem Ipsum</p>
+            <p class="search-text-content">
+              pesquise pelos filmes do studio ghibli usando o campo de busca
+              abaixo
+            </p>
+          </div>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Ex. Castle in the Sky"
+            minlength="3"
+          />
+          <span class="search-span">digite no minimo 3 caracteres!</span>
+          <div class="search-await-results">
+            <img
+              src="./img/totoro.png"
+              alt="Totoro Studio Ghibli"
+              class="search-await-result-img"
+            />
+            <p class="search-text-await-result">nenhuma pesquisa realizada</p>
+          </div>
+        </div>
+
         <img
           class="img"
           src="./img/img-background.jpg"
@@ -140,5 +165,7 @@
     <script src="./js/films.js"></script>
     <script src="./js/login.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/studioGhibli.js"></script>
+    <script src="./js/renderResults.js"></script>
   </body>
 </html>
