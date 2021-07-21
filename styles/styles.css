@@ -12,7 +12,7 @@ img {
 header {
   display: flex;
   justify-content: flex-end;
-  padding: 3vw 4vw;
+  padding: 2.2vw 4vw;
 }
 
 .page-section {
@@ -52,6 +52,7 @@ header {
   flex-wrap: wrap;
   flex-direction: row;
   width: max-content;
+  height: 40px;
   justify-content: space-between;
   align-items: center;
   animation: fade-in-nav 1s;
@@ -61,10 +62,10 @@ header {
 }
 
 .header-nav-title-lab {
+  height: 14px;
   font-weight: 400;
   padding: 1.6px;
   font-size: 16px;
-  line-height: 27px;
   color: #000000;
   padding: 0.1em 0;
   margin-right: 9px;
@@ -77,7 +78,6 @@ header {
   font-family: "Space Mono";
   font-weight: 400;
   font-size: 16px;
-  line-height: 27px;
   color: #000000;
   padding: 1.6px;
   margin-right: 9px;
@@ -185,11 +185,11 @@ a {
 }
 
 .container {
-  width: calc(100% - 8vw);
-  height: calc(100vh - 10vw - 50px);
-  margin-bottom: 4vw;
-  margin-left: 4vw;
-  margin-right: 4vw;
+  width: calc(100% - 6vw);
+  height: calc(100vh - 7vw - 50px);
+  margin-bottom: 3vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
   overflow: hidden;
   position: relative;
 }
@@ -224,6 +224,86 @@ a {
   padding: 6vw;
 }
 
+.search-container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  background-color: #ffffff;
+}
+
+.search-header {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-text-title {
+  font-family: "Space Mono";
+  font-size: 32px;
+  color: #000000;
+  min-width: 300px;
+  text-align: center;
+}
+
+.search-text-content {
+  font-family: "Space Mono";
+  flex-wrap: wrap;
+  font-size: 20px;
+  color: #000000;
+  min-width: 300px;
+  text-align: center;
+}
+
+.search-input {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 40%;
+  min-width: 200px;
+  max-width: 350px;
+  min-height: 40px;
+  text-align: center;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.search-span {
+  display: none;
+  color: red;
+  font-size: 16px;
+}
+
+/* Div search-await-results */
+.search-await-results {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.films {
+  flex-flow: row wrap;
+  overflow-y: auto;
+}
+
+.search-await-result-img {
+  width: 150px;
+  margin: 10px;
+}
+
+.search-text-await-result {
+  font-family: "Space Mono";
+  flex-wrap: wrap;
+  font-size: 18px;
+  color: #000000;
+  text-align: center;
+}
+
 .content-text {
   font-family: "Space Mono";
   font-weight: 700;
@@ -232,59 +312,6 @@ a {
   color: #ffffff;
   overflow-wrap: break-word;
   text-align: center;
-}
-
-@keyframes fade-in-menu {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-button {
-  from {
-    opacity: 0;
-    top: 50%;
-  }
-  to {
-    opacity: 1;
-    top: 0;
-  }
-}
-
-@keyframes fade-in-nav {
-  from {
-    opacity: 0;
-    top: 50%;
-  }
-  to {
-    opacity: 1;
-    top: 10px;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    top: 10%;
-  }
-  to {
-    opacity: 1;
-    top: 0%;
-  }
-}
-
-@keyframes fade-in-logo {
-  from {
-    opacity: 0;
-    top: 60%;
-  }
-  to {
-    opacity: 1;
-    top: 50%;
-  }
 }
 
 .burger-toggle {
@@ -402,4 +429,355 @@ a {
   margin: 8px;
   width: 24px;
   height: 24px;
+}
+
+.modal-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #00000070;
+  position: absolute;
+  top: 0;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  animation: fade-in-simple 0.3s ease;
+  transition: all 0.5s ease-in;
+
+  overflow: hidden;
+
+  z-index: 22;
+}
+
+.modal-content {
+  width: 350px;
+  min-height: 400px;
+  background-color: #ffffff;
+}
+
+.modal-header {
+  width: 100%;
+  height: 92px;
+
+  background-color: #000;
+  position: relative;
+  padding: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-title {
+  width: 290px;
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 30px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.input-login {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  position: relative;
+
+  font-family: "Space mono";
+  font-size: 1;
+
+  width: 100%;
+  height: calc(100% - 92px);
+}
+
+.modal-close-button {
+  position: absolute;
+
+  right: 0;
+  top: 0;
+  padding-right: 12px;
+
+  background-color: transparent;
+  border: none;
+
+  color: #ffffff;
+  font-family: "Space Mono";
+
+  cursor: pointer;
+  font-size: large;
+}
+
+.modal-button {
+  width: 100%;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid black;
+  background-color: white;
+
+  border-radius: 6px;
+  padding: 18px;
+
+  font-size: 1em;
+
+  cursor: pointer;
+
+  transition: background-color 0.1s linear, color 0.1s linear;
+  animation: fade-in-button 1s forwards;
+  margin-top: 32px;
+}
+
+.modal-button:hover {
+  background-color: black;
+
+  color: white;
+}
+
+.modal-button:active {
+  background-color: #00000080;
+}
+.login-email,
+.login-password {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 20px;
+  padding: 0 12px;
+  transition: all 0.5s ease-in;
+}
+
+.login-error-message {
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: red;
+  transition: all 0.5s ease-in;
+}
+
+.input-error {
+  border: 2px solid red;
+}
+
+.card-container {
+  width: 415px;
+  min-width: 300px;
+  height: 600px;
+
+  background-color: #000;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 32px;
+  overflow: hidden;
+}
+
+.card-content-wrapper {
+  width: 415px;
+  min-width: 300px;
+  height: 600px;
+
+  background-color: #000;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 32px;
+
+  position: relative;
+}
+
+.card-title-english {
+  font-family: "Space Mono";
+  font-size: 28px;
+  text-align: center;
+  font-weight: 300;
+
+  color: #ffffff;
+}
+
+.card-divisor {
+  width: 45px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 16px 0;
+}
+
+.card-title-japanese {
+  font-family: "Space Mono";
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.445em;
+
+  color: #ffffff;
+
+  color: #ffffff;
+}
+
+.card-title-japanese-romanji {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-release-date {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-description {
+  width: 375px;
+
+  font-family: Space Mono;
+  font-style: normal;
+  font-size: 13px;
+  line-height: 19px;
+  text-align: center;
+
+  color: #ffffff;
+
+  margin: 16px 0;
+}
+
+.card-film-label {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-director {
+  font-family: Space Mono;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  text-align: center;
+
+  color: #ffffff;
+}
+
+.card-film-poster {
+  width: 415px;
+  min-width: 300px;
+  height: 600px;
+
+  position: absolute;
+  object-fit: cover;
+  object-position: 0 90%;
+
+  border-radius: 8px;
+
+  transition: all 0.5s;
+  animation: breathing 5s infinite ease-in-out;
+
+  overflow: hidden;
+  filter: blur(0.3px);
+}
+
+.card-film-poster:hover {
+  opacity: 0.15;
+  filter: blur(5px);
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in-menu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-button {
+  from {
+    opacity: 0;
+    top: 50%;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
+@keyframes fade-in-nav {
+  from {
+    opacity: 0;
+    top: 50%;
+  }
+  to {
+    opacity: 1;
+    top: 10px;
+  }
+}
+
+@keyframes fade-in-simple {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    top: 10%;
+  }
+  to {
+    opacity: 1;
+    top: 0%;
+  }
+}
+
+@keyframes fade-in-logo {
+  from {
+    opacity: 0;
+    top: 60%;
+  }
+  to {
+    opacity: 1;
+    top: 50%;
+  }
 }

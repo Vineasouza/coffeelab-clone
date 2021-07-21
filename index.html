@@ -92,6 +92,25 @@
             <button class="login-button">área do aluno</button>
           </div>
         </div>
+        <div class="search-container">
+          <div class="search-header">
+            <p class="search-text-title">olá, usuário!</p>
+            <p class="search-text-content">
+              pesquise pelos filmes do studio ghibli usando o campo de busca
+              abaixo
+            </p>
+          </div>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Ex. Castle in the Sky"
+            minlength="3"
+            autofocus
+          />
+          <span class="search-span"></span>
+          <div class="search-await-results"></div>
+        </div>
+
         <img
           class="img"
           src="./img/img-background.jpg"
@@ -106,6 +125,39 @@
         </div>
       </div>
     </section>
-    <script src="./js/script.js"></script>
+    <section class="modal-container">
+      <div class="modal-content">
+        <header class="modal-header">
+          <p class="modal-title">faça login para ter acesso ao catálogo</p>
+          <button class="modal-close-button">x</button>
+        </header>
+        <div class="input-login">
+          <label for="login-email">e-mail</label>
+          <input
+            type="email"
+            name="email"
+            class="login-email"
+            placeholder="insira sua email"
+            value="eve.holt@reqres.in"
+            required
+          />
+          <label for="login-password">senha</label>
+          <input
+            type="password"
+            name="login-password"
+            class="login-password"
+            placeholder="insira sua senha"
+            minlength="3"
+            value=""
+            required
+          />
+          <button class="modal-button">Entrar</button>
+        </div>
+      </div>
+    </section>
+    <script src="./js/films.js"></script>
+    <script src="./js/login.js"></script>
+    <script src="./js/search.js"></script>
+    <script src="./js/burgerButton.js"></script>
   </body>
 </html>
