@@ -52,6 +52,7 @@ header {
   flex-wrap: wrap;
   flex-direction: row;
   width: max-content;
+  height: 40px;
   justify-content: space-between;
   align-items: center;
   animation: fade-in-nav 1s;
@@ -61,6 +62,7 @@ header {
 }
 
 .header-nav-title-lab {
+  height: 14px;
   font-weight: 400;
   padding: 1.6px;
   font-size: 16px;
