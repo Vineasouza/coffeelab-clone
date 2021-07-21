@@ -8,15 +8,19 @@ const imgBackground = document.querySelector(".img");
 const contentWrapper = document.querySelector(".content-wrapper");
 const searchContainer = document.querySelector(".search-container");
 
+/* ADICIONANDO FUNCIONALIDADES NOS BOTÕES E NO MODAL */
+
 // Quando clicar no botao "Area do Aluno", abre o modal de login
 loginButton.onclick = () => {
   modalContainer.style.display = "flex";
 };
 
-// Quando clicar no modal, fecha o modal de login
+// Fechar o modal ao clicar fora dele
 modalContainer.onclick = (e) => {
   if (e.target === modalContainer) modalContainer.style.display = "none";
 };
+
+// Fechar o modal ao clicar no botão de fechar o modal
 modalCloseButton.onclick = (e) => {
   if (e.target === modalCloseButton) modalContainer.style.display = "none";
 };
@@ -26,7 +30,26 @@ modalCloseButton.onclick = (e) => {
 "password": "cityslicka"
 */
 
-// Fluxo de login
+/* FLUXO DE LOGIN - VERIFICACAO, VALIDAÇÃO, REVERSÃO DA VALIDAÇÃO, LOGIN E LOGOUT */
+
+const userLogged = () => {
+  // Alterando botão da tela inicial de "área do aluno" para sair, bem como sua ação
+  loginButton.innerHTML = "sair";
+  loginButton.onclick = logout;
+
+  // Alterando items do layout para exibir items pertinentes
+  modalContainer.style.display = "none";
+  searchContainer.style.display = "flex";
+  imgBackground.style.display = "none";
+  contentWrapper.style.display = "none";
+
+  // Modificando mensagem de boas vindas com o nome do usuário
+  const saudacao = document.querySelector(".search-text-title");
+  const email = localStorage.getItem("email");
+  saudacao.innerHTML = `olá, ${email.split("@")[0]}!`;
+
+  if (isUserLogged) fetchFilms();
+};
 
 // Função que valida o login (email e senha)
 const validateLogin = (email, password) => {
@@ -76,12 +99,16 @@ const revertValidationError = (validation, element) => {
 
 // Função de logout
 const logout = () => {
-  // limpar token do storage
+  // Limpar token e e-mail do storage
   localStorage.removeItem("token");
+  localStorage.removeItem("email");
+
+  // Voltar itens da tela inicial ao estado anterior
   loginButton.innerHTML = "área do aluno";
   loginButton.onclick = () => {
     modalContainer.style.display = "flex";
   };
+
   imgBackground.style.display = "initial";
   contentWrapper.style.display = "flex";
   searchContainer.style.display = "none";
@@ -121,22 +148,15 @@ const login = () => {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
       // Login bem-sucedido -> Alterando botão de login para botão de logout e salvando token no localStorage
 
-      loginButton.innerHTML = "sair";
-      loginButton.onclick = logout;
+      // Armazendando e-mail e token no localStorage
+      localStorage.setItem("email", emailElement.value);
+      localStorage.setItem("token", JSON.parse(xmlhttp.responseText).token);
 
+      // Limpando conteúdo dos campos de login e senha
       emailElement.value = "";
       passwordElement.value = "";
 
-      localStorage.setItem("token", JSON.parse(xmlhttp.responseText).token);
-
-      modalContainer.style.display = "none";
-      modalLoginButton.innerHTML = "Entrar";
-
-      searchContainer.style.display = "flex";
-      imgBackground.style.display = "none";
-      contentWrapper.style.display = "none";
-
-      fetchFilmsPosters(["castle in the sky"]).then((r) => console.log(r));
+      userLogged();
     } else if (xmlhttp.status === 400) {
       // Login mal-sucedido -> Exibindo mensagem de erro e revertendo botão 'Carregando...' para 'Entrar'
 
@@ -149,9 +169,8 @@ const login = () => {
 
       passwordElement.onkeydown = () =>
         revertValidationError(validation, passwordElement);
-
-      modalLoginButton.innerHTML = "Entrar";
     }
+    modalLoginButton.innerHTML = "Entrar";
   };
   xmlhttp.send(
     JSON.stringify({
@@ -161,5 +180,13 @@ const login = () => {
   );
 };
 
+const isUserLogged = () => {
+  if (localStorage.getItem("token")) return true;
+  return false;
+};
+
 // Mudando o que acontece ao clicar no botao de login
 modalLoginButton.onclick = login;
+
+// Verificando se o usuário já se encontra logado
+if (isUserLogged()) userLogged();

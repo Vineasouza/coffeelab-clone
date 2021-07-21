@@ -16,10 +16,14 @@ const createCard = (data) => {
   const contentWrapper = document.createElement("div");
   contentWrapper.classList.add("card-content-wrapper");
 
-  const poster = document.createElement("img");
-  poster.classList.add("card-film-poster");
-  poster.alt = filmTitle.toLowerCase();
-  poster.src = posterURL;
+  if (posterURL !== undefined && posterURL !== "N/A" && posterURL !== "") {
+    const poster = document.createElement("img");
+    poster.classList.add("card-film-poster");
+    poster.alt = filmTitle.toLowerCase();
+    poster.src = posterURL;
+
+    contentWrapper.append(poster);
+  }
 
   const title = document.createElement("h1");
   title.classList.add("card-title-english");
@@ -53,7 +57,6 @@ const createCard = (data) => {
   director.innerHTML = filmDirector;
 
   contentWrapper.append(
-    poster,
     title,
     divisor,
     originalTitle,
@@ -67,33 +70,3 @@ const createCard = (data) => {
   container.append(contentWrapper);
   return container;
 };
-
-document.body.appendChild(
-  createCard({
-    id: 123,
-    title: "spirited away",
-    original_title: "千と千尋の神隠し",
-    original_title_romanised: "Sen to Chihiro no kamikakushi",
-    release_date: "2001",
-    description:
-      "Spirited Away is an Oscar winning Japanese animated film about a ten year old girl who wanders away from her parents along a path that leads to a world ruled by strange and unusual monster-like animals. Her parents have been changed into pigs along with others inside a bathhouse full of these creatures. Will she ever see the world how it once was?",
-    director: "Hayao Miyazaki",
-    posterURL:
-      "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
-  })
-);
-
-document.body.appendChild(
-  createCard({
-    id: 123,
-    title: "My Neighbor Totoro",
-    original_title: "となりのトトロ",
-    original_title_romanised: "Tonari no Totoro",
-    release_date: "1988",
-    description:
-      "Two sisters move to the country with their father in order to be closer to their hospitalized mother, and discover the surrounding trees are inhabited by Totoros, magical spirits of the forest. When the youngest runs away from home, the older sister seeks help from the spirits to find her.",
-    director: "Hayao Miyazaki",
-    posterURL:
-      "https://m.media-amazon.com/images/M/MV5BYzJjMTYyMjQtZDI0My00ZjE2LTkyNGYtOTllNGQxNDMyZjE0XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
-  })
-);

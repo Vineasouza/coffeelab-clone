@@ -1,37 +1,23 @@
-/**
- * This function uses the array of films names passed as
- * props to fetch its posters from OMDb database.
- * @param {*} filmsNames
- * an array of strings with films names
- * @returns {*} a promisified array with image URLs
- * @example
- *
- * ```javascript
- * fetchFilmsPosters(filmsNames)
- *     .then((postersListArray) => console.log(postersListArray))
- *     .catch((error) => console.log('Error retrieving posters: ', error))
- * ```
- */
-const fetchFilmsPosters = async (filmsNames = []) => {
-  if (filmsNames.length > 0)
+const fetchFilmsPosters = async (films = []) => {
+  if (films.length > 0)
     return Promise.all(
-      filmsNames.map((filmName) => {
-        // Create the XHR request
+      films.map((film) => {
+        // Cria o objeto XHTTP
         var request = new XMLHttpRequest();
 
-        // Return it as a Promise
+        // Return a resposta como uma promise
         return new Promise(function (resolve, reject) {
-          // Setup our listener to process compeleted requests
+          // Cria o action listener para 'escutar' as respostas à requisição
           request.onreadystatechange = function () {
-            // Only run if the request is complete
+            // Se já tiver completado a requisição
             if (request.readyState !== 4) return;
 
             // Process the response
             if (request.status >= 200 && request.status < 300) {
-              // If successful
+              // Se concluir
               resolve(JSON.parse(request.responseText).Poster);
             } else {
-              // If failed
+              // Se falhar
               reject({
                 status: request.status,
                 statusText: request.statusText,
@@ -39,19 +25,73 @@ const fetchFilmsPosters = async (filmsNames = []) => {
             }
           };
 
-          // Setup our HTTP request
+          // Cria a requisição HTTP
           request.open(
             "GET",
-            `https://www.omdbapi.com/?t=${filmName
-              .split(" ")
-              .join("+")}&apikey=40d7586b`,
+            `https://www.omdbapi.com/?t=${film.title.split(" ").join("+")}&y=${
+              film.release_date
+            }&apikey=40d7586b`,
             true
           );
 
-          // Send the request
+          // Envia a requisição
           request.send();
         });
       })
     );
   return [];
+};
+
+const fetchStudioGhibliFilms = () => {
+  // Cria o objeto XHTTP
+  var request = new XMLHttpRequest();
+
+  // Return a resposta como uma promise
+  return new Promise(function (resolve, reject) {
+    // Cria o action listener para 'escutar' as respostas à requisição
+    request.onreadystatechange = function () {
+      // Se já tiver completado a requisição
+      if (request.readyState !== 4) return;
+
+      // Process the response
+      if (request.status >= 200 && request.status < 300) {
+        // Se concluir
+        resolve(JSON.parse(request.responseText));
+      } else {
+        // Se falhar
+        reject({
+          status: request.status,
+          statusText:
+            "Erro ao acessar a API: https://ghibliapi.herokuapp.com/films",
+        });
+      }
+    };
+
+    // Cria a requisição HTTP
+    request.open(
+      "GET",
+      "https://ghibliapi.herokuapp.com/films?fields=id,title,original_title,original_title_romanised,description,director,release_date",
+      true
+    );
+
+    // Envia a requisição
+    request.send();
+  });
+};
+
+// Este é o array que irá conter todos os filmes logo que o usuário logar
+let loading = true;
+let films = [];
+
+// Esta é a função que irá pegar todos os filmes e colocar no array acima
+const fetchFilms = async () => {
+  films = await fetchStudioGhibliFilms();
+
+  posters = await fetchFilmsPosters(films);
+
+  films = films.map((film, idx) => ({ ...film, posterURL: posters[idx] }));
+
+  console.log(films);
+
+  loading = false;
 };

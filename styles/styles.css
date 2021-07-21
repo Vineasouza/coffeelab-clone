@@ -12,7 +12,7 @@ img {
 header {
   display: flex;
   justify-content: flex-end;
-  padding: 3vw 4vw;
+  padding: 2.2vw 4vw;
 }
 
 .page-section {
@@ -183,11 +183,11 @@ a {
 }
 
 .container {
-  width: calc(100% - 8vw);
-  height: calc(100vh - 10vw - 50px);
-  margin-bottom: 4vw;
-  margin-left: 4vw;
-  margin-right: 4vw;
+  width: calc(100% - 6vw);
+  height: calc(100vh - 7vw - 50px);
+  margin-bottom: 3vw;
+  margin-left: 3vw;
+  margin-right: 3vw;
   overflow: hidden;
   position: relative;
 }
@@ -236,21 +236,24 @@ a {
   width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
 }
 
 .search-text-title {
   font-family: "Space Mono";
-  font-size: 36px;
+  font-size: 32px;
   color: #000000;
+  min-width: 300px;
   text-align: center;
 }
 
 .search-text-content {
   font-family: "Space Mono";
   flex-wrap: wrap;
-  font-size: 24px;
+  font-size: 20px;
   color: #000000;
+  min-width: 300px;
   text-align: center;
 }
 
@@ -259,9 +262,11 @@ a {
   border-radius: 6px;
   width: 40%;
   min-width: 200px;
-  height: 40px;
+  max-width: 350px;
+  min-height: 40px;
   text-align: center;
-  margin-top: 40px;
+  padding: 0;
+  margin: 15px 0;
 }
 
 .search-span {
@@ -272,10 +277,16 @@ a {
 
 /* Div search-await-results */
 .search-await-results {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 20px;
+}
+
+.films {
+  flex-flow: row wrap;
+  overflow-y: auto;
 }
 
 .search-await-result-img {
@@ -433,6 +444,8 @@ a {
   transition: all 0.5s ease-in;
 
   overflow: hidden;
+
+  z-index: 22;
 }
 
 .modal-content {
@@ -553,7 +566,8 @@ a {
 
 .card-container {
   width: 415px;
-  height: 415px;
+  min-width: 300px;
+  height: 600px;
 
   background-color: #000;
   border-radius: 8px;
@@ -569,7 +583,8 @@ a {
 
 .card-content-wrapper {
   width: 415px;
-  height: 415px;
+  min-width: 300px;
+  height: 600px;
 
   background-color: #000;
   border-radius: 8px;
@@ -670,7 +685,8 @@ a {
 
 .card-film-poster {
   width: 415px;
-  height: 415px;
+  min-width: 300px;
+  height: 600px;
 
   position: absolute;
   object-fit: cover;
