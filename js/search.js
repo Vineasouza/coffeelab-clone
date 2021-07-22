@@ -53,7 +53,7 @@ const handleSearch = () => {
   );
 
   // Nenhum resultado encontrado
-  if (films.length === 0) {
+  if (result.length === 0) {
     searchSpan.style.display = "none";
     return toggleResult("NENHUM_RESULTADO");
   }
