@@ -30,7 +30,7 @@ const fetchFilmsPosters = async (films = []) => {
             "GET",
             `https://www.omdbapi.com/?t=${film.title.split(" ").join("+")}&y=${
               film.release_date
-            }&apikey=40d7586b`,
+            }&apikey=d75dfeee`,
             true
           );
 
