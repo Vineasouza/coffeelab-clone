@@ -28,9 +28,9 @@ const fetchFilmsPosters = async (films = []) => {
           // Cria a requisição HTTP
           request.open(
             "GET",
-            `https://www.omdbapi.com/?t=${film.title.split(" ").join("+")}&y=${
-              film.release_date
-            }&apikey=d75dfeee`,
+            `https://www.omdbapi.com/?t=${film.original_title_romanised
+              .split(" ")
+              .join("+")}&apikey=d75dfeee`,
             true
           );
 
@@ -91,7 +91,7 @@ const fetchFilms = async () => {
 
   films = films.map((film, idx) => ({ ...film, posterURL: posters[idx] }));
 
-  console.log(films);
+  console.table(films);
 
   loading = false;
 };
