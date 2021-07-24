@@ -15,7 +15,7 @@ text.classList.add("search-text-await-result");
 const toggleResult = (type) => {
   switch (type) {
     case "NENHUM_RESULTADO":
-      text.innerHTML = "nenhuma filme com este nome foi encontrado :(";
+      text.innerHTML = "nenhum filme com este nome foi encontrado :(";
       return resultContainer.append(totoroImg, text);
     case "NENHUMA_PESQUISA":
       text.innerHTML = "nenhuma pesquisa realizada";
