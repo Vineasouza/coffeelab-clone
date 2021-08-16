@@ -4,6 +4,7 @@ const cors = require("cors");
 // const uuid = require("uuid");
 
 const userRouter = require("./src/routes/userRouter");
+const moviesRouter = require("./src/routes/movieRouter");
 
 dotenv.config();
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/users", userRouter);
+app.use("/movies", moviesRouter);
 
 app.listen(process.env.PORT || 3000, (l) => {
   console.clear();
