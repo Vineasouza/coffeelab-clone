@@ -137,7 +137,7 @@ const login = () => {
       passwordElement.onkeydown = () =>
         revertValidationError(validation, passwordElement);
     }
-    modalLoginButton.innerHTML = "Entrar";
+    modalLoginButton.innerHTML = "entrar";
     return null;
   }
 
@@ -158,7 +158,7 @@ const login = () => {
 
       userLogged();
     } else if (xmlhttp.status === 400) {
-      // Login mal-sucedido -> Exibindo mensagem de erro e revertendo botão 'Carregando...' para 'Entrar'
+      // Login mal-sucedido -> Exibindo mensagem de erro e revertendo botão 'Carregando...' para 'entrar'
 
       const { errorMessageElement, parentElement } = validation;
       errorMessageElement.innerHTML = "e-mail ou senha incorretos";
@@ -170,7 +170,7 @@ const login = () => {
       passwordElement.onkeydown = () =>
         revertValidationError(validation, passwordElement);
     }
-    modalLoginButton.innerHTML = "Entrar";
+    modalLoginButton.innerHTML = "entrar";
   };
   xmlhttp.send(
     JSON.stringify({

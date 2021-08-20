@@ -73,8 +73,9 @@ const update = async (req, res) => {
     }
   )
     .then((movie) => {
+      if (movie[0] === 0) throw new Error("Filme não encontrado!");
       sequelize.close();
-      res.status(200).json(movie);
+      res.status(200).json({ message: "Filme atualizado com sucesso!" });
     })
     .catch((err) => {
       sequelize.close();
@@ -94,8 +95,9 @@ const remove = async (req, res) => {
     },
   })
     .then((movie) => {
+      if (movie === 0) throw new Error("Filme não encontrado!");
       sequelize.close();
-      res.status(200).json(movie);
+      res.status(200).json({ message: "Filme removido com sucesso!" });
     })
     .catch((err) => {
       sequelize.close();

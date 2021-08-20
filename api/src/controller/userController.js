@@ -26,7 +26,9 @@ const index = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const { newUser } = req.body;
+  const newUser = req.body;
+
+  console.table(newUser);
 
   const hashed = bcrypt.hashSync(newUser.user_password, 8);
   newUser.user_password = hashed;
@@ -34,6 +36,17 @@ const create = async (req, res) => {
   const sequelize = new Sequelize(process.env.DATABASE_URL);
 
   const Users = createUsersModel(sequelize);
+
+  const userAlreadyExists = await Users.findOne({
+    where: {
+      user_email: newUser.user_email,
+    },
+  });
+
+  if (userAlreadyExists) {
+    sequelize.close();
+    return res.status(400).json({ errorMessage: "email já cadastrado!" });
+  }
 
   Users.create(newUser)
     .then((user) => {

@@ -138,7 +138,7 @@
             name="email"
             class="login-email"
             placeholder="insira sua email"
-            value="eve.holt@reqres.in"
+            value=""
             required
           />
           <label for="login-password">senha</label>
@@ -151,12 +151,56 @@
             value=""
             required
           />
-          <button class="modal-button">Entrar</button>
+          <button class="modal-button">entrar</button>
+          <button class="signup-button">cadastrar-se</button>
+        </div>
+      </div>
+    </section>
+    <section class="modal-cadastro-container">
+      <div class="modal-cadastro-content">
+        <header class="modal-cadastro-header">
+          <p class="modal-cadastro-title">
+            crie sua conta abaixo para acessar o catálogo
+          </p>
+          <button class="modal-cadastro-close-button">x</button>
+        </header>
+        <div class="input-cadastro">
+          <label for="cadastro-email">e-mail</label>
+          <input
+            type="email"
+            name="email"
+            class="cadastro-email"
+            placeholder="insira sua email"
+            value=""
+            required
+          />
+          <label for="cadastro-password">senha</label>
+          <input
+            type="password"
+            name="cadastro-password"
+            class="cadastro-password"
+            placeholder="insira sua senha"
+            minlength="3"
+            value=""
+            required
+          />
+          <label for="cadastro-confirm-password">confirmar senha</label>
+          <input
+            type="password"
+            name="cadastro-confirm-password"
+            class="cadastro-confirm-password"
+            placeholder="repita sua senha"
+            minlength="3"
+            value=""
+            required
+          />
+          <button class="modal-cadastro-button">criar conta</button>
         </div>
       </div>
     </section>
     <script src="./js/films.js"></script>
     <script src="./js/login.js"></script>
+    <script src="./js/signup.js"></script>
     <script src="./js/search.js"></script>
     <script src="./js/burgerButton.js"></script>
   </body>
