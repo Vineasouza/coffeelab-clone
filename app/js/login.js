@@ -7,6 +7,7 @@ const passwordValue = document.querySelector(".login-password").value;
 const imgBackground = document.querySelector(".img");
 const contentWrapper = document.querySelector(".content-wrapper");
 const searchContainer = document.querySelector(".search-container");
+const registrationContainer = document.querySelector(".registration-container");
 
 /* ADICIONANDO FUNCIONALIDADES NOS BOTÕES E NO MODAL */
 
@@ -39,7 +40,8 @@ const userLogged = () => {
 
   // Alterando items do layout para exibir items pertinentes
   modalContainer.style.display = "none";
-  searchContainer.style.display = "flex";
+  registrationContainer.style.display = "flex";
+  searchContainer.style.display = "none";
   imgBackground.style.display = "none";
   contentWrapper.style.display = "none";
 

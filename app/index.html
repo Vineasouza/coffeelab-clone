@@ -92,6 +92,7 @@
             <button class="login-button">área do aluno</button>
           </div>
         </div>
+        <!-- SEARCH DIV -->
         <div class="search-container">
           <div class="search-header">
             <p class="search-text-title">olá, usuário!</p>
@@ -109,6 +110,73 @@
           />
           <span class="search-span"></span>
           <div class="search-await-results"></div>
+        </div>
+        <!-- REGISTRATION DIV -->
+        <div class="registration-container">
+          <div class="registration-header">
+            <p class="registration-text-title">Olá, Administrador</p>
+            <p class="registration-text-content">
+              adicione um filme ao catálogo utilizando o formulário abaixo
+            </p>
+          </div>
+          <div class="registration-inputs-container">
+            <label for="text">Título</label>
+            <input
+              type="text"
+              class="registration-input"
+              placeholder="Título"
+              maxlength="50"
+              autofocus
+            />
+            <label for="text">Título Original</label>
+            <input
+              type="text"
+              class="registration-input"
+              placeholder="Título Original"
+              maxlength="50"
+            />
+            <label for="text">Título Romanizado</label>
+            <input
+              type="text"
+              class="registration-input"
+              placeholder="Título Romanizado"
+              maxlength="50"
+            />
+            <label for="text">Ano de Lançamento</label>
+            <input
+              type="text"
+              class="registration-input"
+              placeholder="Ano de Lançamento"
+              maxlength="4"
+            />
+            <label for="text">Descrição</label>
+            <textarea
+              id="message"
+              name="message"
+              class="registration-input"
+              placeholder="Descrição"
+              maxlength="500"
+              rows="5"
+            ></textarea>
+            <label for="text">Diretor</label>
+            <input
+              type="text"
+              class="registration-input"
+              placeholder="Diretor"
+              maxlength="50"
+            />
+            <label for="text">Poster do Filme</label>
+            <input
+              type="file"
+              class="registration-file-upload"
+              accept="image/png, image/jpeg"
+              maxlength="50"
+              size="60"
+            />
+            <button type="submit" class="resgistration-button-submit">
+              Enviar
+            </button>
+          </div>
         </div>
 
         <img
