@@ -92,6 +92,7 @@
             <button class="login-button">área do aluno</button>
           </div>
         </div>
+        <!-- SEARCH DIV -->
         <div class="search-container">
           <div class="search-header">
             <p class="search-text-title">olá, usuário!</p>
@@ -109,6 +110,77 @@
           />
           <span class="search-span"></span>
           <div class="search-await-results"></div>
+        </div>
+        <!-- REGISTRATION DIV -->
+        <div class="registration-container">
+          <div class="registration-header">
+            <p class="registration-text-title">Olá, Administrador</p>
+            <p class="registration-text-content">
+              adicione um filme ao catálogo utilizando o formulário abaixo
+            </p>
+            <span class="registration-sucess-message"></span>
+          </div>
+          <div class="registration-inputs-container">
+            <label for="text">Título</label>
+            <input
+              type="text"
+              class="registration-input mov_title"
+              placeholder="Título"
+              maxlength="50"
+              autofocus
+            />
+            <label for="text">Título Original</label>
+            <input
+              type="text"
+              class="registration-input mov_original_title"
+              placeholder="Título Original"
+              maxlength="50"
+            />
+            <label for="text">Título Romanizado</label>
+            <input
+              type="text"
+              class="registration-input mov_original_title_romanised"
+              placeholder="Título Romanizado"
+              maxlength="50"
+            />
+            <label for="text">Ano de Lançamento</label>
+            <input
+              type="text"
+              class="registration-input mov_release_date"
+              placeholder="Ano de Lançamento"
+              maxlength="4"
+            />
+            <span class="registration-error-date"></span>
+            <label for="text">Descrição</label>
+            <textarea
+              id="message"
+              name="message"
+              class="registration-input mov_description"
+              placeholder="Descrição"
+              maxlength="500"
+              rows="5"
+            ></textarea>
+            <label for="text">Diretor</label>
+            <input
+              type="text"
+              class="registration-input mov_director"
+              placeholder="Diretor"
+              maxlength="50"
+            />
+            <label for="text">Poster do Filme</label>
+            <input
+              type="file"
+              name="file"
+              class="registration-file-upload"
+              accept="image/png, image/jpeg, image/jpg, image/gif"
+              maxlength="50"
+              size="60"
+            />
+            <span class="registration-error-message"></span>
+            <button type="submit" class="registration-button-submit">
+              Enviar
+            </button>
+          </div>
         </div>
 
         <img
@@ -218,5 +290,6 @@
     <script src="./js/signup.js"></script>
     <script src="./js/search.js"></script>
     <script src="./js/burgerButton.js"></script>
+    <script src="./js/registration.js"></script>
   </body>
 </html>

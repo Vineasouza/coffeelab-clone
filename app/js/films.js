@@ -38,8 +38,6 @@ let films = [];
 const fetchFilms = async () => {
   films = await fetchStudioGhibliFilms();
 
-  console.table(films);
-
   loading = false;
 };
 
