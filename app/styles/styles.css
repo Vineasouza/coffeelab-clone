@@ -342,6 +342,8 @@ a {
   min-width: 200px;
   max-width: 350px;
   min-height: 40px;
+  margin: 10px 0;
+  padding: 10px 10px;
 
   font-family: "Space Mono";
   flex-wrap: wrap;
@@ -350,7 +352,7 @@ a {
   text-align: center;
 }
 
-.resgistration-button-submit {
+.registration-button-submit {
   border: 2px solid black;
   border-radius: 6px;
   width: 100%;
@@ -612,7 +614,7 @@ a {
 .modal-button:hover,
 .signup-button:hover,
 .modal-cadastro-button:hover,
-.resgistration-button-submit:hover {
+.registration-button-submit:hover {
   background-color: black;
   color: white;
 }
@@ -639,7 +641,9 @@ a {
 }
 
 .login-error-message,
-.cadastro-error-message {
+.cadastro-error-message,
+.registration-error-message,
+.registration-error-date {
   width: 100%;
   text-align: center;
   font-size: 16px;
