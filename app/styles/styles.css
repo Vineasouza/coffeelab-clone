@@ -224,7 +224,8 @@ a {
   padding: 6vw;
 }
 
-.search-container {
+.search-container,
+.registration-container {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -234,7 +235,8 @@ a {
   background-color: #ffffff;
 }
 
-.search-header {
+.search-header,
+.registration-header {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -242,7 +244,8 @@ a {
   justify-content: center;
 }
 
-.search-text-title {
+.search-text-title,
+.registration-text-title {
   font-family: "Space Mono";
   font-size: 32px;
   color: #000000;
@@ -250,7 +253,8 @@ a {
   text-align: center;
 }
 
-.search-text-content {
+.search-text-content,
+.registration-text-content {
   font-family: "Space Mono";
   flex-wrap: wrap;
   font-size: 20px;
@@ -302,6 +306,71 @@ a {
   font-size: 18px;
   color: #000000;
   text-align: center;
+}
+
+.registration-container {
+  overflow-y: scroll;
+}
+
+.registration-inputs-container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 0;
+}
+
+.registration-input {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 350px;
+  min-height: 40px;
+  text-align: center;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.registration-file-upload {
+  border: 2px solid black;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  text-align: center;
+
+  width: 100%;
+  min-width: 200px;
+  max-width: 350px;
+  min-height: 40px;
+  margin: 10px 0;
+  padding: 10px 10px;
+
+  font-family: "Space Mono";
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #000000;
+  text-align: center;
+}
+
+.registration-button-submit {
+  border: 2px solid black;
+  border-radius: 6px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 350px;
+  min-height: 40px;
+  text-align: center;
+  padding: 0;
+  margin: 15px 0;
+
+  font-family: "Space Mono";
+  flex-wrap: wrap;
+  font-size: 16px;
+  color: #000000;
+  text-align: center;
+
+  margin-top: 30px;
+  cursor: pointer;
 }
 
 .content-text {
@@ -544,9 +613,9 @@ a {
 
 .modal-button:hover,
 .signup-button:hover,
-.modal-cadastro-button:hover {
+.modal-cadastro-button:hover,
+.registration-button-submit:hover {
   background-color: black;
-
   color: white;
 }
 
@@ -555,6 +624,7 @@ a {
 .modal-cadastro-button:active {
   background-color: #00000080;
 }
+
 .login-email,
 .login-password,
 .login-confirm-password,
@@ -571,11 +641,22 @@ a {
 }
 
 .login-error-message,
-.cadastro-error-message {
+.cadastro-error-message,
+.registration-error-message,
+.registration-error-date {
   width: 100%;
   text-align: center;
   font-size: 16px;
   color: red;
+  transition: all 0.5s ease-in;
+}
+
+.registration-sucess-message {
+  margin: 10px 0;
+  /* width: 100%; */
+  text-align: center;
+  font-size: 16px;
+  color: green;
   transition: all 0.5s ease-in;
 }
 

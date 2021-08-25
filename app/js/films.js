@@ -91,7 +91,7 @@ const fetchFilms = async () => {
 
   films = films.map((film, idx) => ({ ...film, posterURL: posters[idx] }));
 
-  console.table(films);
+  // console.table(films);
 
   loading = false;
 };

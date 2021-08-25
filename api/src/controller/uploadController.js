@@ -6,10 +6,11 @@ const create = async (req, res) => {
     res.status(201).send({
       file_path: path.resolve(__dirname, "..", "..", "uploads", filename),
     });
+  } else {
+    return res.status(400).send({
+      errorMessage: "Falha no upload do arquivo",
+    });
   }
-  res.status(418).send({
-    errorMessage: "Falha no upload do arquivo",
-  });
 };
 
 module.exports = { create };
