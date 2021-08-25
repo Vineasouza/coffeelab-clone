@@ -1,4 +1,4 @@
-const Sequelize = require("Sequelize");
+const Sequelize = require("sequelize");
 const { createMoviesModel } = require("../model/moviesModel");
 const uuid = require("uuid");
 
