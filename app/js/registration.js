@@ -10,25 +10,19 @@ const botaoSubmit = document.querySelector(".registration-button-submit");
 const errorMessage = document.querySelector(".registration-error-message");
 const errorRealeaseMessage = document.querySelector(".registration-error-date");
 const fileUpload = document.querySelector(".registration-file-upload");
+const sucessMessage = document.querySelector(".registration-sucess-message");
 
-let posterPATH = "";
-fileUpload.addEventListener("change", function (e) {
-  var xmlhttp = new XMLHttpRequest();
-  var file = fileUpload.files[0];
-  xmlhttp.open("POST", "http://localhost:3045/upload/create", true);
-  var formData = new FormData();
-  formData.append("file", file);
-  xmlhttp.onreadystatechange = function () {
-    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-      console.log(xmlhttp.responseText);
-      // posterPATH = xmlhttp.responseText
-    } else if (xmlhttp.status === 400) {
-      console.log("Erro no upload do arquivo");
-    }
-  };
+const validaUpload = (file) => {
+  var extensoesPermitidas = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
 
-  xmlhttp.send(formData);
-});
+  if (!extensoesPermitidas.exec(file)) {
+    alert("Invalid file type");
+    fileUpload.value = "";
+    return false;
+  } else {
+    return true;
+  }
+};
 
 const validaAno = (ano) => {
   if (/^[0-9]{4,4}/.test(ano)) {
@@ -48,6 +42,15 @@ const naoVazio = (text) => {
   }
 };
 
+var posterPATH = "";
+var formData = new FormData();
+
+fileUpload.addEventListener("change", function (e) {
+  var file = fileUpload.files[0];
+  validaUpload(fileUpload.value);
+  formData.append("file", file);
+});
+
 botaoSubmit.onclick = () => {
   let dados = {
     mov_title: tituloFilme.value,
@@ -56,46 +59,64 @@ botaoSubmit.onclick = () => {
     mov_release_date: dataLancamentoFilme.value,
     mov_description: descricaoFilme.value,
     mov_director: diretorFilme.value,
-    mov_posterURL: posterPATH,
   };
+
   let validacao = Object.values(dados)
     .map((dados) => naoVazio(dados))
     .every((e) => e === true);
 
-  let dadosValidados = [validaAno(dataLancamentoFilme.value), validacao].every(
-    (e) => e === true
-  );
+  let dadosValidados = [
+    validaAno(dataLancamentoFilme.value),
+    validacao,
+    validaUpload(fileUpload.value),
+  ].every((e) => e === true);
 
   if (!dadosValidados) {
     errorMessage.innerHTML = "Não é permitido campos vazios";
   } else {
     errorMessage.innerHTML = "";
 
-    // var xmlhttp = new XMLHttpRequest();
-    // xmlhttp.open("POST", "http://localhost:3045/upload/create", true);
-    // xmlhttp.setRequestHeader("Content-Type", "multipart/form-data");
-    // var formData = new FormData();
-    // formData.append("thefile", file);
-    // xmlhttp.send(formData);
+    const envioDoPoster = new Promise((resolve, reject) => {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.open("POST", "http://localhost:3045/upload/create", true);
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState === 4 && xmlhttp.status === 201) {
+          posterPATH = JSON.parse(xmlhttp.responseText).file_path;
+          resolve(posterPATH);
+        } else if (xmlhttp.status === 400) {
+          console.log("Erro no upload do arquivo");
 
-    // var xmlhttp = new XMLHttpRequest();
-    // xmlhttp.open("POST", "http://localhost:3045/movies/create", true);
-    // xmlhttp.setRequestHeader("Content-Type", "application/json");
-    // xmlhttp.onreadystatechange = function () {
-    //   if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-    //   } else if (xmlhttp.status === 400) {
-    //   }
-    // };
-    // xmlhttp.send(
-    //   JSON.stringify({
-    //     mov_title: tituloFilme.value,
-    //     mov_original_title: tituloOriginalFilme.value,
-    //     mov_original_title_romanised: tituloRomanizadoFilme.value,
-    //     mov_release_date: dataLancamentoFilme.value,
-    //     mov_description: descricaoFilme.value,
-    //     mov_director: diretorFilme.value,
-    //     mov_posterURL: "",
-    //   })
-    // );
+          reject("Erro no upload do arquivo");
+        }
+      };
+      xmlhttp.send(formData);
+    });
+
+    envioDoPoster
+      .then((urlDoPoster) => {
+        var xmlhttp2 = new XMLHttpRequest();
+        xmlhttp2.open("POST", "http://localhost:3045/movies/create", true);
+        xmlhttp2.setRequestHeader("Content-Type", "application/json");
+        xmlhttp2.onreadystatechange = function () {
+          if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {
+            sucessMessage.innerHTML = "Filme adicionado com sucesso!";
+            console.log(xmlhttp2.responseText);
+          } else if (xmlhttp2.status === 400) {
+            console.log(xmlhttp2.responseText);
+          }
+        };
+        xmlhttp2.send(
+          JSON.stringify({
+            mov_title: tituloFilme.value,
+            mov_original_title: tituloOriginalFilme.value,
+            mov_original_title_romanised: tituloRomanizadoFilme.value,
+            mov_release_date: dataLancamentoFilme.value,
+            mov_description: descricaoFilme.value,
+            mov_director: diretorFilme.value,
+            mov_posterurl: urlDoPoster,
+          })
+        );
+      })
+      .catch((erro) => console.log(erro));
   }
 };
