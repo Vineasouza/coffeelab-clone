@@ -3,6 +3,9 @@ const modalLoginContainer = document.querySelector(".modal-container");
 const modalCadastroContainer = document.querySelector(
   ".modal-cadastro-container"
 );
+const modalSucessoContainer = document.querySelector(
+  ".modal-sucesso-cadastro-container"
+);
 
 /* Alternar para o modal de cadastro ao clicar em 'cadastrar-se' */
 signUpButton.onclick = (e) => {
@@ -17,9 +20,26 @@ const modalCadastroCloseButton = document.querySelector(
   ".modal-cadastro-close-button"
 );
 modalCadastroCloseButton.onclick = (e) => {
+  console.log(modalSucessoContainer.style.display);
   if (e.target === modalCadastroCloseButton) {
     modalCadastroContainer.style.display = "none";
   }
+};
+
+/* Fechando modal de cadastro ao clicar no 'X' */
+const modalSucessoCadastroCloseButton = document.querySelector(
+  ".modal-sucesso-cadastro-close-button"
+);
+modalSucessoCadastroCloseButton.onclick = (e) => {
+  console.log(modalSucessoContainer.style.display);
+  if (e.target === modalSucessoCadastroCloseButton) {
+    modalSucessoContainer.style.display = "none";
+  }
+};
+
+const mostrarSucesso = () => {
+  modalCadastroContainer.style.display = "none";
+  modalSucessoContainer.style.display = "flex";
 };
 
 /* Realizando procedimento de cadastro */
@@ -27,6 +47,7 @@ const validateCadastro = (email, password, confirmPassword) => {
   const cadastroContainer = document.querySelector(".input-cadastro");
 
   const errorMessage = document.createElement("span");
+  errorMessage.id = "signUpErrorMessage";
   errorMessage.classList.add("cadastro-error-message");
 
   let error = {
@@ -61,6 +82,8 @@ const validateCadastro = (email, password, confirmPassword) => {
   }
 
   if (errorMessage.innerHTML.trim() !== "") {
+    const erroAtual = document.getElementById("signUpErrorMessage");
+    if (erroAtual) erroAtual.parentElement.removeChild(erroAtual);
     cadastroContainer.insertBefore(errorMessage, cadastroContainer.children[6]);
     return { ...error, valid: false };
   }
@@ -91,9 +114,6 @@ const cadastro = () => {
     confirmarSenhaCadastroElement.value
   ); // Aqui já é feita a validação dos campos
 
-  // Alterando texto do botão para carregando (melhor para UX)
-  modalLoginButton.innerHTML = "Carregando...";
-
   // Aplicando resultado da validação nos campos
   if (!validation.valid) {
     if (validation.field === "email") {
@@ -120,28 +140,29 @@ const cadastro = () => {
   xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-      // Login bem-sucedido -> Alterando botão de login para botão de logout e salvando token no localStorage
+      // Cadastro bem-sucedido -> Exibe mensagem de sucesso
 
       console.log(JSON.parse(xmlhttp.responseText));
+      mostrarSucesso();
 
       // Armazendando e-mail e token no localStorage
       // localStorage.setItem("email", emailElement.value);
       // localStorage.setItem("token", JSON.parse(xmlhttp.responseText).token);
-
-      // Limpando conteúdo dos campos de login e senha
-      // emailElement.value = "";
-      // passwordElement.value = "";
-
-      userLogged();
     } else if (xmlhttp.status === 400) {
       // Login mal-sucedido -> Exibindo mensagem de erro e revertendo botão 'Carregando...' para 'entrar'
       const { errorMessageElement, parentElement } = validation;
       errorMessageElement.innerHTML =
         "erro no cadastro: " + JSON.parse(xmlhttp.responseText).errorMessage;
+
+      const erroAtual = document.getElementById("signUpErrorMessage");
+      console.log("erroAtual > ", erroAtual);
+      if (erroAtual) erroAtual.parentElement.removeChild(erroAtual);
+
       parentElement.insertBefore(
         errorMessageElement,
         parentElement.children[6]
       );
+
       confirmarSenhaCadastroElement.onkeydown = () =>
         revertValidationError(validation, confirmarSenhaCadastroElement);
     }

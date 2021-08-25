@@ -25,11 +25,6 @@ modalCloseButton.onclick = (e) => {
   if (e.target === modalCloseButton) modalContainer.style.display = "none";
 };
 
-/*
-"email": "eve.holt@reqres.in",
-"password": "cityslicka"
-*/
-
 /* FLUXO DE LOGIN - VERIFICACAO, VALIDAÇÃO, REVERSÃO DA VALIDAÇÃO, LOGIN E LOGOUT */
 
 const userLogged = () => {
@@ -142,7 +137,7 @@ const login = () => {
   }
 
   // Fazendo requisição ao reqres.in
-  xmlhttp.open("POST", "https://reqres.in/api/login", true);
+  xmlhttp.open("POST", "http://localhost:3045/users/login", true);
   xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -157,7 +152,7 @@ const login = () => {
       passwordElement.value = "";
 
       userLogged();
-    } else if (xmlhttp.status === 400) {
+    } else if ([400, 401].includes(xmlhttp.status)) {
       // Login mal-sucedido -> Exibindo mensagem de erro e revertendo botão 'Carregando...' para 'entrar'
 
       const { errorMessageElement, parentElement } = validation;
@@ -174,8 +169,8 @@ const login = () => {
   };
   xmlhttp.send(
     JSON.stringify({
-      email: emailElement.value,
-      password: passwordElement.value,
+      user_email: emailElement.value,
+      user_password: passwordElement.value,
     })
   );
 };
