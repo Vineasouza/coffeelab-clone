@@ -7,6 +7,7 @@ const passwordValue = document.querySelector(".login-password").value;
 const imgBackground = document.querySelector(".img");
 const contentWrapper = document.querySelector(".content-wrapper");
 const searchContainer = document.querySelector(".search-container");
+const registrationContainer = document.querySelector(".registration-container");
 
 /* ADICIONANDO FUNCIONALIDADES NOS BOTÕES E NO MODAL */
 
@@ -25,23 +26,28 @@ modalCloseButton.onclick = (e) => {
   if (e.target === modalCloseButton) modalContainer.style.display = "none";
 };
 
-/*
-"email": "eve.holt@reqres.in",
-"password": "cityslicka"
-*/
-
 /* FLUXO DE LOGIN - VERIFICACAO, VALIDAÇÃO, REVERSÃO DA VALIDAÇÃO, LOGIN E LOGOUT */
 
-const userLogged = () => {
+const userLogged = (tipoDeUsuario) => {
+  // Tipo 0 - admin
+  // Tipo 1 - usuario
+
   // Alterando botão da tela inicial de "área do aluno" para sair, bem como sua ação
   loginButton.innerHTML = "sair";
   loginButton.onclick = logout;
 
-  // Alterando items do layout para exibir items pertinentes
-  modalContainer.style.display = "none";
-  searchContainer.style.display = "flex";
+  // Alterando imagem de fundo
   imgBackground.style.display = "none";
   contentWrapper.style.display = "none";
+  modalContainer.style.display = "none";
+
+  // Alterando items do layout para exibir items pertinentes
+
+  if (tipoDeUsuario === 0) {
+    registrationContainer.style.display = "flex";
+  } else {
+    searchContainer.style.display = "flex";
+  }
 
   // Modificando mensagem de boas vindas com o nome do usuário
   const saudacao = document.querySelector(".search-text-title");
@@ -142,7 +148,11 @@ const login = () => {
   }
 
   // Fazendo requisição ao reqres.in
-  xmlhttp.open("POST", "https://reqres.in/api/login", true);
+  xmlhttp.open(
+    "POST",
+    "https://coffeelab-clone-api.herokuapp.com/users/login",
+    true
+  );
   xmlhttp.setRequestHeader("Content-Type", "application/json");
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
@@ -152,12 +162,14 @@ const login = () => {
       localStorage.setItem("email", emailElement.value);
       localStorage.setItem("token", JSON.parse(xmlhttp.responseText).token);
 
+      console.table(JSON.parse(xmlhttp.responseText));
+
       // Limpando conteúdo dos campos de login e senha
       emailElement.value = "";
       passwordElement.value = "";
 
-      userLogged();
-    } else if (xmlhttp.status === 400) {
+      userLogged(JSON.parse(xmlhttp.responseText).tipo);
+    } else if ([400, 401].includes(xmlhttp.status)) {
       // Login mal-sucedido -> Exibindo mensagem de erro e revertendo botão 'Carregando...' para 'entrar'
 
       const { errorMessageElement, parentElement } = validation;
@@ -174,8 +186,8 @@ const login = () => {
   };
   xmlhttp.send(
     JSON.stringify({
-      email: emailElement.value,
-      password: passwordElement.value,
+      user_email: emailElement.value,
+      user_password: passwordElement.value,
     })
   );
 };

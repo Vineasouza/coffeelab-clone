@@ -78,7 +78,11 @@ botaoSubmit.onclick = () => {
 
     const envioDoPoster = new Promise((resolve, reject) => {
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("POST", "http://localhost:3045/upload/create", true);
+      xmlhttp.open(
+        "POST",
+        "https://coffeelab-clone-api.herokuapp.com/upload/create",
+        true
+      );
       xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 201) {
           posterPATH = JSON.parse(xmlhttp.responseText).file_path;
@@ -95,7 +99,11 @@ botaoSubmit.onclick = () => {
     envioDoPoster
       .then((urlDoPoster) => {
         var xmlhttp2 = new XMLHttpRequest();
-        xmlhttp2.open("POST", "http://localhost:3045/movies/create", true);
+        xmlhttp2.open(
+          "POST",
+          "https://coffeelab-clone-api.herokuapp.com/movies/create",
+          true
+        );
         xmlhttp2.setRequestHeader("Content-Type", "application/json");
         xmlhttp2.onreadystatechange = function () {
           if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {

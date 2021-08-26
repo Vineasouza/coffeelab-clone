@@ -101,13 +101,16 @@
               abaixo
             </p>
           </div>
-          <input
-            type="text"
-            class="search-input"
-            placeholder="Ex. Castle in the Sky"
-            minlength="3"
-            autofocus
-          />
+          <form class="width" autocomplete="off">
+            <input
+              autocomplete="false"
+              type="text"
+              class="search-input"
+              placeholder="Ex. Castle in the Sky"
+              minlength="3"
+              autofocus
+            />
+          </form>
           <span class="search-span"></span>
           <div class="search-await-results"></div>
         </div>
@@ -123,6 +126,7 @@
           <div class="registration-inputs-container">
             <label for="text">Título</label>
             <input
+              aria-autocomplete="none"
               type="text"
               class="registration-input mov_title"
               placeholder="Título"
@@ -267,6 +271,21 @@
             required
           />
           <button class="modal-cadastro-button">criar conta</button>
+        </div>
+      </div>
+    </section>
+    <section class="modal-sucesso-cadastro-container">
+      <div class="modal-cadastro-content">
+        <header class="modal-cadastro-header">
+          <p class="modal-cadastro-title">
+            crie sua conta abaixo para acessar o catálogo
+          </p>
+          <button class="modal-sucesso-cadastro-close-button">x</button>
+        </header>
+        <div class="input-cadastro">
+          <div class="mensagem-sucesso-container">
+            <span>Seu cadastro foi realizado com sucesso!</span>
+          </div>
         </div>
       </div>
     </section>
