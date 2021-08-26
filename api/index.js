@@ -13,8 +13,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Compartilhando a pasta public para upload de imagens
-app.use(express.static("public"));
+// Compartilhando a pasta uploads para upload de imagens
+app.use(express.static("uploads"));
 
 app.use("/users", userRouter);
 app.use("/movies", moviesRouter);

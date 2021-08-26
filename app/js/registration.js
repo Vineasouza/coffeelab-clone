@@ -61,6 +61,16 @@ botaoSubmit.onclick = () => {
     mov_director: diretorFilme.value,
   };
 
+  const limparCampos = () => {
+    tituloFilme.value = null;
+    tituloOriginalFilme.value = null;
+    tituloRomanizadoFilme.value = null;
+    dataLancamentoFilme.value = null;
+    descricaoFilme.value = null;
+    diretorFilme.value = null;
+    fileUpload.value = null;
+  };
+
   let validacao = Object.values(dados)
     .map((dados) => naoVazio(dados))
     .every((e) => e === true);
@@ -108,6 +118,7 @@ botaoSubmit.onclick = () => {
         xmlhttp2.onreadystatechange = function () {
           if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {
             sucessMessage.innerHTML = "Filme adicionado com sucesso!";
+            limparCampos();
             console.log(xmlhttp2.responseText);
           } else if (xmlhttp2.status === 400) {
             console.log(xmlhttp2.responseText);

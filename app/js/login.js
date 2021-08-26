@@ -118,6 +118,7 @@ const logout = () => {
   imgBackground.style.display = "initial";
   contentWrapper.style.display = "flex";
   searchContainer.style.display = "none";
+  registrationContainer.style.display = "none";
 };
 
 // Função de login
