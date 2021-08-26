@@ -83,7 +83,9 @@ const login = async (req, res) => {
       });
 
       sequelize.close();
-      res.status(200).json({ email: user.user_email, token });
+      res
+        .status(200)
+        .json({ email: user.user_email, token, tipo: user.user_type });
     })
     .catch((err) => {
       sequelize.close();
