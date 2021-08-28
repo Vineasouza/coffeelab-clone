@@ -20,7 +20,6 @@ const modalCadastroCloseButton = document.querySelector(
   ".modal-cadastro-close-button"
 );
 modalCadastroCloseButton.onclick = (e) => {
-  console.log(modalSucessoContainer.style.display);
   if (e.target === modalCadastroCloseButton) {
     modalCadastroContainer.style.display = "none";
   }
@@ -31,7 +30,6 @@ const modalSucessoCadastroCloseButton = document.querySelector(
   ".modal-sucesso-cadastro-close-button"
 );
 modalSucessoCadastroCloseButton.onclick = (e) => {
-  console.log(modalSucessoContainer.style.display);
   if (e.target === modalSucessoCadastroCloseButton) {
     modalSucessoContainer.style.display = "none";
   }
@@ -146,7 +144,6 @@ const cadastro = () => {
     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
       // Cadastro bem-sucedido -> Exibe mensagem de sucesso
 
-      console.log(JSON.parse(xmlhttp.responseText));
       mostrarSucesso();
 
       // Armazendando e-mail e token no localStorage

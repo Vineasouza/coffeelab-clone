@@ -87,15 +87,14 @@ botaoSubmit.onclick = () => {
     errorMessage.innerHTML = "";
 
     const envioDoPoster = new Promise((resolve, reject) => {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.setRequestHeader(
-        "Authorization",
-        "Bearer " + localStorage.getItem("token")
-      );
       xmlhttp.open(
         "POST",
         "https://coffeelab-clone-api.herokuapp.com/upload/create",
         true
+      );
+      xmlhttp.setRequestHeader(
+        "Authorization",
+        "Bearer " + localStorage.getItem("token")
       );
       xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 201) {
@@ -128,7 +127,6 @@ botaoSubmit.onclick = () => {
             sucessMessage.innerHTML = "Filme adicionado com sucesso!";
             limparCampos();
             carregarListaCompletaDeFilmes();
-            console.log(xmlhttp2.responseText);
           } else if (xmlhttp2.status === 400) {
             console.log(xmlhttp2.responseText);
           }
