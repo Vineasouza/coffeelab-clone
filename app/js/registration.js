@@ -192,16 +192,16 @@ btnConfirmarExclusao.onclick = async () => {
   const modal = document.querySelector(".modal-confirmar-exclusao");
 
   var xmlhttp2 = new XMLHttpRequest();
-  xmlhttp2.setRequestHeader(
-    "Authorization",
-    "Bearer " + localStorage.getItem("token")
-  );
-
   xmlhttp2.open(
     "DELETE",
     `https://coffeelab-clone-api.herokuapp.com/movies/remove/${modal.id}`,
     true
   );
+  xmlhttp2.setRequestHeader(
+    "Authorization",
+    "Bearer " + localStorage.getItem("token")
+  );
+
   xmlhttp2.setRequestHeader("Content-Type", "application/json");
   xmlhttp2.onreadystatechange = function () {
     if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {
