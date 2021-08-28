@@ -1,6 +1,12 @@
 const fetchStudioGhibliFilms = () => {
   // Cria o objeto XHTTP
   var request = new XMLHttpRequest();
+  // Cria a requisição HTTP
+  request.open(
+    "GET",
+    "https://coffeelab-clone-api.herokuapp.com/movies/index",
+    true
+  );
   request.setRequestHeader(
     "Authorization",
     "Bearer " + localStorage.getItem("token")
@@ -25,13 +31,6 @@ const fetchStudioGhibliFilms = () => {
         });
       }
     };
-
-    // Cria a requisição HTTP
-    request.open(
-      "GET",
-      "https://coffeelab-clone-api.herokuapp.com/movies/index",
-      true
-    );
 
     // Envia a requisição
     request.send();
