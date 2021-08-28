@@ -1,6 +1,7 @@
 const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 
 const userRouter = require("./src/routes/userRouter");
 const moviesRouter = require("./src/routes/movieRouter");
@@ -13,12 +14,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Compartilhando a pasta uploads para upload de imagens
-app.use(express.static("uploads"));
-
 app.use("/users", userRouter);
 app.use("/movies", moviesRouter);
 app.use("/upload", uploadRouter);
+
+// Compartilhando a pasta uploads para upload de imagens
+app.use("/uploads", express.static(path.resolve(__dirname, "uploads")));
 
 app.listen(process.env.PORT || 3000, (l) => {
   console.clear();

@@ -1,10 +1,11 @@
 const multer = require("multer");
+const path = require("path");
 
 // Configuração de armazenamento
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     if (!file) cb(null, null);
-    cb(null, "uploads/");
+    cb(null, path.resolve(__dirname, "..", "..", "uploads"));
   },
   filename: (req, file, cb) => {
     if (!file) cb(null, null);
