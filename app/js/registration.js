@@ -87,6 +87,7 @@ botaoSubmit.onclick = () => {
     errorMessage.innerHTML = "";
 
     const envioDoPoster = new Promise((resolve, reject) => {
+      var xmlhttp = new XMLHttpRequest();
       xmlhttp.open(
         "POST",
         "https://coffeelab-clone-api.herokuapp.com/upload/create",
