@@ -61,6 +61,16 @@ botaoSubmit.onclick = () => {
     mov_director: diretorFilme.value,
   };
 
+  const limparCampos = () => {
+    tituloFilme.value = null;
+    tituloOriginalFilme.value = null;
+    tituloRomanizadoFilme.value = null;
+    dataLancamentoFilme.value = null;
+    descricaoFilme.value = null;
+    diretorFilme.value = null;
+    fileUpload.value = null;
+  };
+
   let validacao = Object.values(dados)
     .map((dados) => naoVazio(dados))
     .every((e) => e === true);
@@ -78,7 +88,15 @@ botaoSubmit.onclick = () => {
 
     const envioDoPoster = new Promise((resolve, reject) => {
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.open("POST", "http://localhost:3045/upload/create", true);
+      xmlhttp.setRequestHeader(
+        "Authorization",
+        "Bearer " + localStorage.getItem("token")
+      );
+      xmlhttp.open(
+        "POST",
+        "https://coffeelab-clone-api.herokuapp.com/upload/create",
+        true
+      );
       xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState === 4 && xmlhttp.status === 201) {
           posterPATH = JSON.parse(xmlhttp.responseText).file_path;
@@ -95,11 +113,21 @@ botaoSubmit.onclick = () => {
     envioDoPoster
       .then((urlDoPoster) => {
         var xmlhttp2 = new XMLHttpRequest();
-        xmlhttp2.open("POST", "http://localhost:3045/movies/create", true);
+        xmlhttp2.open(
+          "POST",
+          "https://coffeelab-clone-api.herokuapp.com/movies/create",
+          true
+        );
+        xmlhttp2.setRequestHeader(
+          "Authorization",
+          "Bearer " + localStorage.getItem("token")
+        );
         xmlhttp2.setRequestHeader("Content-Type", "application/json");
         xmlhttp2.onreadystatechange = function () {
           if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {
             sucessMessage.innerHTML = "Filme adicionado com sucesso!";
+            limparCampos();
+            carregarListaCompletaDeFilmes();
             console.log(xmlhttp2.responseText);
           } else if (xmlhttp2.status === 400) {
             console.log(xmlhttp2.responseText);
@@ -119,4 +147,69 @@ botaoSubmit.onclick = () => {
       })
       .catch((erro) => console.log(erro));
   }
+};
+
+const carregarListaCompletaDeFilmes = async () => {
+  const filmsContainer = document.querySelector(".films-list-container");
+
+  filmsContainer.innerHTML = "";
+
+  await fetchFilms();
+
+  const cards = films.map((film) => createCard(film, true));
+
+  filmsContainer.append(...cards);
+};
+
+carregarListaCompletaDeFilmes();
+
+exibirModalExclusao = (idFilme) => {
+  const modal = document.querySelector(".modal-confirmar-exclusao");
+  modal.id = idFilme;
+  modal.style.display = "flex";
+};
+
+ocultarModalExclusao = () => {
+  const modal = document.querySelector(".modal-confirmar-exclusao");
+  modal.style.display = "none";
+};
+
+const btnCancelarExclusao = document.querySelector(
+  ".modal-cancelar-exclusao-button"
+);
+
+const btnFecharExclusao = document.querySelector(
+  ".modal-confirmar-exclusao-close-button"
+);
+
+btnCancelarExclusao.onclick = ocultarModalExclusao;
+btnFecharExclusao.onclick = ocultarModalExclusao;
+
+const btnConfirmarExclusao = document.querySelector(
+  ".modal-confirmar-exclusao-button"
+);
+
+btnConfirmarExclusao.onclick = async () => {
+  const modal = document.querySelector(".modal-confirmar-exclusao");
+
+  var xmlhttp2 = new XMLHttpRequest();
+  xmlhttp2.setRequestHeader(
+    "Authorization",
+    "Bearer " + localStorage.getItem("token")
+  );
+
+  xmlhttp2.open(
+    "DELETE",
+    `https://coffeelab-clone-api.herokuapp.com/movies/remove/${modal.id}`,
+    true
+  );
+  xmlhttp2.setRequestHeader("Content-Type", "application/json");
+  xmlhttp2.onreadystatechange = function () {
+    if (xmlhttp2.readyState === 4 && xmlhttp2.status === 200) {
+      ocultarModalExclusao();
+      carregarListaCompletaDeFilmes();
+    } else if (xmlhttp2.status === 400) {
+    }
+  };
+  xmlhttp2.send();
 };

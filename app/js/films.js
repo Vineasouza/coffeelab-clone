@@ -1,50 +1,10 @@
-const fetchFilmsPosters = async (films = []) => {
-  if (films.length > 0)
-    return Promise.all(
-      films.map((film) => {
-        // Cria o objeto XHTTP
-        var request = new XMLHttpRequest();
-
-        // Return a resposta como uma promise
-        return new Promise(function (resolve, reject) {
-          // Cria o action listener para 'escutar' as respostas à requisição
-          request.onreadystatechange = function () {
-            // Se já tiver completado a requisição
-            if (request.readyState !== 4) return;
-
-            // Process the response
-            if (request.status >= 200 && request.status < 300) {
-              // Se concluir
-              resolve(JSON.parse(request.responseText).Poster);
-            } else {
-              // Se falhar
-              reject({
-                status: request.status,
-                statusText: request.statusText,
-              });
-            }
-          };
-
-          // Cria a requisição HTTP
-          request.open(
-            "GET",
-            `https://www.omdbapi.com/?t=${film.original_title_romanised
-              .split(" ")
-              .join("+")}&apikey=d75dfeee`,
-            true
-          );
-
-          // Envia a requisição
-          request.send();
-        });
-      })
-    );
-  return [];
-};
-
 const fetchStudioGhibliFilms = () => {
   // Cria o objeto XHTTP
   var request = new XMLHttpRequest();
+  request.setRequestHeader(
+    "Authorization",
+    "Bearer " + localStorage.getItem("token")
+  );
 
   // Return a resposta como uma promise
   return new Promise(function (resolve, reject) {
@@ -61,8 +21,7 @@ const fetchStudioGhibliFilms = () => {
         // Se falhar
         reject({
           status: request.status,
-          statusText:
-            "Erro ao acessar a API: https://ghibliapi.herokuapp.com/films",
+          statusText: "Erro ao acessar a API",
         });
       }
     };
@@ -70,7 +29,7 @@ const fetchStudioGhibliFilms = () => {
     // Cria a requisição HTTP
     request.open(
       "GET",
-      "https://ghibliapi.herokuapp.com/films?fields=id,title,original_title,original_title_romanised,description,director,release_date",
+      "https://coffeelab-clone-api.herokuapp.com/movies/index",
       true
     );
 
@@ -87,29 +46,24 @@ let films = [];
 const fetchFilms = async () => {
   films = await fetchStudioGhibliFilms();
 
-  posters = await fetchFilmsPosters(films);
-
-  films = films.map((film, idx) => ({ ...film, posterURL: posters[idx] }));
-
-  // console.table(films);
-
   loading = false;
 };
 
 // Função que criará o card resultado mostrando o filme e suas informações
-const createCard = (data) => {
+const createCard = (data, isAdmin) => {
   const {
-    id,
-    title: filmTitle,
-    original_title,
-    original_title_romanised,
-    release_date,
-    description: filmDescription,
-    director: filmDirector,
-    posterURL,
+    mov_id: id,
+    mov_title: filmTitle,
+    mov_original_title: original_title,
+    mov_original_title_romanised: original_title_romanised,
+    mov_release_date: release_date,
+    mov_description: filmDescription,
+    mov_director: filmDirector,
+    mov_posterurl: posterURL,
   } = data;
 
   const container = document.createElement("div");
+  container.id = id;
   container.classList.add("card-container");
 
   const contentWrapper = document.createElement("div");
@@ -121,7 +75,10 @@ const createCard = (data) => {
     poster.alt = filmTitle.toLowerCase();
     poster.src = posterURL;
 
-    contentWrapper.append(poster);
+    poster.onload = () => {
+      contentWrapper.append(poster);
+      // contentWrapper.remove(poster);
+    };
   }
 
   const title = document.createElement("h1");
@@ -165,6 +122,16 @@ const createCard = (data) => {
     directorLabel,
     director
   );
+
+  if (isAdmin) {
+    const btnExcluir = document.createElement("button");
+    btnExcluir.classList.add("btn-excluir-filme");
+    btnExcluir.innerHTML = "excluir";
+
+    btnExcluir.onclick = () => exibirModalExclusao(id);
+
+    contentWrapper.append(btnExcluir);
+  }
 
   container.append(contentWrapper);
   return container;

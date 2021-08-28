@@ -1,1 +1,307 @@
-{"_type":"export","__export_format":4,"__export_date":"2021-08-20T22:53:20.755Z","__export_source":"insomnia.desktop.app:v2021.4.1","resources":[{"_id":"req_555d2bae7c2f489dadaec692520a4ea3","parentId":"fld_930951c2bd1d4b15ac30d6457e5566eb","modified":1629496545737,"created":1629495427331,"url":"{{ _.base_url }}/upload/create","name":"Send movie poster","description":"","method":"POST","body":{"mimeType":"multipart/form-data","params":[{"id":"pair_2b1df1daaad9482b9892f2cf9bb732d9","name":"file","value":"","description":"","type":"file","fileName":"C:\\Users\\lucas\\Pictures\\Avatar Médico\\kreizler.jpg"}]},"parameters":[],"headers":[{"name":"Content-Type","value":"multipart/form-data","id":"pair_8ad021f1aa5c4d62b57e2077b27dab0d"},{"id":"pair_9f8509b86d6b4e4a95c5c6e922b57d0b","name":"file","value":"","description":""}],"authentication":{},"metaSortKey":-1629495427332,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_930951c2bd1d4b15ac30d6457e5566eb","parentId":"wrk_6e0387edc21f46dfa07c82e586a28689","modified":1629495405063,"created":1629495405063,"name":"Upload","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1629495405063,"_type":"request_group"},{"_id":"wrk_6e0387edc21f46dfa07c82e586a28689","parentId":null,"modified":1629152644202,"created":1629152644202,"name":"coffeelab-clone","description":"","scope":"collection","_type":"workspace"},{"_id":"req_4c1f8a235bf14978b227a1428b2da7fd","parentId":"fld_522f18731ca44dc5832fce93240347dc","modified":1629494327229,"created":1629494169794,"url":"{{ _.base_url }}/users/signup","name":"SignUp","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"user_email\": \"lorem2@ipsum.com\",\n\t\"user_password\": \"12345\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_5af041d2be8e4358a42936aeff4697b1"}],"authentication":{},"metaSortKey":-1629494169794,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_522f18731ca44dc5832fce93240347dc","parentId":"wrk_6e0387edc21f46dfa07c82e586a28689","modified":1629493955939,"created":1629493955939,"name":"User","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1629493955939,"_type":"request_group"},{"_id":"req_af0a9676d7a9492788544ffdb0ebfcf8","parentId":"fld_522f18731ca44dc5832fce93240347dc","modified":1629494339491,"created":1629493959182,"url":"{{ _.base_url }}/users/login","name":"Login","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"user_email\": \"lorem2@ipsum.com\",\n\t\"user_password\": \"12345\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_e2b569864ac543e9aacb746a396ac8ca"}],"authentication":{},"metaSortKey":-1629493959182,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_9da3a96f63b949cdaba231ccdf4b7039","parentId":"fld_34256a8b3a4e46b6803fdccda9497dc7","modified":1629154305522,"created":1629153678800,"url":"http://localhost:3045/movies/index","name":"Index","description":"","method":"GET","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1629153678800,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_34256a8b3a4e46b6803fdccda9497dc7","parentId":"wrk_6e0387edc21f46dfa07c82e586a28689","modified":1629153259733,"created":1629153259733,"name":"Movie","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1629153259733,"_type":"request_group"},{"_id":"req_c0cee89c49564f90b4ed550314ffcf61","parentId":"fld_34256a8b3a4e46b6803fdccda9497dc7","modified":1629496607986,"created":1629152662475,"url":"http://localhost:3045/movies/create","name":"Create","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"mov_title\":\"As viagens de lorem\",\n\t\"mov_original_title\":\"As lorem de viagem\",\n\t\"mov_original_title_romanised\":\"ローレムトリップ\",\n\t\"mov_release_date\":\"2021\",\n\t\"mov_description\": \"Viagem de Lorem, ondem lorem viaja\",\n\t\"mov_director\": \"Lorem Ipsum\",\n\t\"mov_posterurl\":\"/public/\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_60cde3f98adf4c0b82e7fdcc3137fcdb"}],"authentication":{},"metaSortKey":-1629153254378.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_757ac4de12904abfb9785837a84ae22a","parentId":"fld_34256a8b3a4e46b6803fdccda9497dc7","modified":1629496610677,"created":1629157549695,"url":"http://localhost:3045/movies/update/e0d869faa-8bc8-402c-9a5d-a303012c72a4","name":"Update","description":"","method":"PUT","body":{"mimeType":"application/json","text":"{\n\t\"mov_title\":\"As viagens de lorem\",\n\t\"mov_original_title\":\"As lorem de viagem 2\",\n\t\"mov_original_title_romanised\":\"ローレムトリップ\",\n\t\"mov_release_date\":\"2021\",\n\t\"mov_description\": \"Viagem de Lorem, ondem lorem viaja\",\n\t\"mov_director\": \"Lorem Ipsum\",\n\t\"mov_posterurl\":\"/public/src\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_4bf3405361ec449093d112fbfd5ff7c0"}],"authentication":{},"metaSortKey":-1629153254353.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_366cf4d298b54749a6e55ecc0b208e22","parentId":"fld_34256a8b3a4e46b6803fdccda9497dc7","modified":1629494537043,"created":1629155235336,"url":"http://localhost:3045/movies/remove/e0869faa-8bc8-402c-9a5d-a303012c72a4","name":"Remove","description":"","method":"DELETE","body":{},"parameters":[],"headers":[],"authentication":{},"metaSortKey":-1629153254328.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_8e4b8959dfa677bc34320390eaa92c62a6b4b39c","parentId":"wrk_6e0387edc21f46dfa07c82e586a28689","modified":1629494036902,"created":1629152644497,"name":"Base Environment","data":{"base_url":"http://localhost:3045"},"dataPropertyOrder":{"&":["base_url"]},"color":null,"isPrivate":false,"metaSortKey":1629152644497,"_type":"environment"},{"_id":"jar_8e4b8959dfa677bc34320390eaa92c62a6b4b39c","parentId":"wrk_6e0387edc21f46dfa07c82e586a28689","modified":1629152644510,"created":1629152644510,"name":"Default Jar","cookies":[],"_type":"cookie_jar"},{"_id":"spc_907828bbbc0c4491b741ce041cbc59c8","parentId":"wrk_6e0387edc21f46dfa07c82e586a28689","modified":1629152644214,"created":1629152644214,"fileName":"coffeelab-clone","contents":"","contentType":"yaml","_type":"api_spec"}]}
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-08-20T22:53:20.755Z",
+  "__export_source": "insomnia.desktop.app:v2021.4.1",
+  "resources": [
+    {
+      "_id": "req_555d2bae7c2f489dadaec692520a4ea3",
+      "parentId": "fld_930951c2bd1d4b15ac30d6457e5566eb",
+      "modified": 1629496545737,
+      "created": 1629495427331,
+      "url": "{{ _.base_url }}/upload/create",
+      "name": "Send movie poster",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "multipart/form-data",
+        "params": [
+          {
+            "id": "pair_2b1df1daaad9482b9892f2cf9bb732d9",
+            "name": "file",
+            "value": "",
+            "description": "",
+            "type": "file",
+            "fileName": "C:\\Users\\lucas\\Pictures\\Avatar Médico\\kreizler.jpg"
+          }
+        ]
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "multipart/form-data",
+          "id": "pair_8ad021f1aa5c4d62b57e2077b27dab0d"
+        },
+        {
+          "id": "pair_9f8509b86d6b4e4a95c5c6e922b57d0b",
+          "name": "file",
+          "value": "",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629495427332,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_930951c2bd1d4b15ac30d6457e5566eb",
+      "parentId": "wrk_6e0387edc21f46dfa07c82e586a28689",
+      "modified": 1629495405063,
+      "created": 1629495405063,
+      "name": "Upload",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1629495405063,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_6e0387edc21f46dfa07c82e586a28689",
+      "parentId": null,
+      "modified": 1629152644202,
+      "created": 1629152644202,
+      "name": "coffeelab-clone",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_4c1f8a235bf14978b227a1428b2da7fd",
+      "parentId": "fld_522f18731ca44dc5832fce93240347dc",
+      "modified": 1629494327229,
+      "created": 1629494169794,
+      "url": "{{ _.base_url }}/users/signup",
+      "name": "SignUp",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"user_email\": \"lorem2@ipsum.com\",\n\t\"user_password\": \"12345\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_5af041d2be8e4358a42936aeff4697b1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629494169794,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_522f18731ca44dc5832fce93240347dc",
+      "parentId": "wrk_6e0387edc21f46dfa07c82e586a28689",
+      "modified": 1629493955939,
+      "created": 1629493955939,
+      "name": "User",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1629493955939,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_af0a9676d7a9492788544ffdb0ebfcf8",
+      "parentId": "fld_522f18731ca44dc5832fce93240347dc",
+      "modified": 1629494339491,
+      "created": 1629493959182,
+      "url": "{{ _.base_url }}/users/login",
+      "name": "Login",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"user_email\": \"lorem2@ipsum.com\",\n\t\"user_password\": \"12345\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e2b569864ac543e9aacb746a396ac8ca"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629493959182,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9da3a96f63b949cdaba231ccdf4b7039",
+      "parentId": "fld_34256a8b3a4e46b6803fdccda9497dc7",
+      "modified": 1629154305522,
+      "created": 1629153678800,
+      "url": "https://coffeelab-clone-api.herokuapp.com/movies/index",
+      "name": "Index",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1629153678800,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_34256a8b3a4e46b6803fdccda9497dc7",
+      "parentId": "wrk_6e0387edc21f46dfa07c82e586a28689",
+      "modified": 1629153259733,
+      "created": 1629153259733,
+      "name": "Movie",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1629153259733,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_c0cee89c49564f90b4ed550314ffcf61",
+      "parentId": "fld_34256a8b3a4e46b6803fdccda9497dc7",
+      "modified": 1629496607986,
+      "created": 1629152662475,
+      "url": "https://coffeelab-clone-api.herokuapp.com/movies/create",
+      "name": "Create",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"mov_title\":\"As viagens de lorem\",\n\t\"mov_original_title\":\"As lorem de viagem\",\n\t\"mov_original_title_romanised\":\"ローレムトリップ\",\n\t\"mov_release_date\":\"2021\",\n\t\"mov_description\": \"Viagem de Lorem, ondem lorem viaja\",\n\t\"mov_director\": \"Lorem Ipsum\",\n\t\"mov_posterurl\":\"/public/\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_60cde3f98adf4c0b82e7fdcc3137fcdb"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629153254378.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_757ac4de12904abfb9785837a84ae22a",
+      "parentId": "fld_34256a8b3a4e46b6803fdccda9497dc7",
+      "modified": 1629496610677,
+      "created": 1629157549695,
+      "url": "https://coffeelab-clone-api.herokuapp.com/movies/update/e0d869faa-8bc8-402c-9a5d-a303012c72a4",
+      "name": "Update",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"mov_title\":\"As viagens de lorem\",\n\t\"mov_original_title\":\"As lorem de viagem 2\",\n\t\"mov_original_title_romanised\":\"ローレムトリップ\",\n\t\"mov_release_date\":\"2021\",\n\t\"mov_description\": \"Viagem de Lorem, ondem lorem viaja\",\n\t\"mov_director\": \"Lorem Ipsum\",\n\t\"mov_posterurl\":\"/public/src\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_4bf3405361ec449093d112fbfd5ff7c0"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1629153254353.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_366cf4d298b54749a6e55ecc0b208e22",
+      "parentId": "fld_34256a8b3a4e46b6803fdccda9497dc7",
+      "modified": 1629494537043,
+      "created": 1629155235336,
+      "url": "https://coffeelab-clone-api.herokuapp.com/movies/remove/e0869faa-8bc8-402c-9a5d-a303012c72a4",
+      "name": "Remove",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1629153254328.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_8e4b8959dfa677bc34320390eaa92c62a6b4b39c",
+      "parentId": "wrk_6e0387edc21f46dfa07c82e586a28689",
+      "modified": 1629494036902,
+      "created": 1629152644497,
+      "name": "Base Environment",
+      "data": { "base_url": "https://coffeelab-clone-api.herokuapp.com" },
+      "dataPropertyOrder": { "&": ["base_url"] },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1629152644497,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_8e4b8959dfa677bc34320390eaa92c62a6b4b39c",
+      "parentId": "wrk_6e0387edc21f46dfa07c82e586a28689",
+      "modified": 1629152644510,
+      "created": 1629152644510,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_907828bbbc0c4491b741ce041cbc59c8",
+      "parentId": "wrk_6e0387edc21f46dfa07c82e586a28689",
+      "modified": 1629152644214,
+      "created": 1629152644214,
+      "fileName": "coffeelab-clone",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}

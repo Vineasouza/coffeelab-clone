@@ -1,4 +1,4 @@
-const Sequelize = require("Sequelize");
+const Sequelize = require("sequelize");
 const { createUsersModel } = require("../model/usersModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -83,7 +83,9 @@ const login = async (req, res) => {
       });
 
       sequelize.close();
-      res.status(200).json({ email: user.user_email, token });
+      res
+        .status(200)
+        .json({ email: user.user_email, token, tipo: user.user_type });
     })
     .catch((err) => {
       sequelize.close();
