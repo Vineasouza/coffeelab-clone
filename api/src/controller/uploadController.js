@@ -4,7 +4,7 @@ const create = async (req, res) => {
   if (req.file) {
     const { filename } = req.file;
     res.status(201).send({
-      file_path: path.resolve(__dirname, "..", "..", "uploads", filename),
+      file_path: `${process.env.APP_URL}/uploads/${filename}`,
     });
   } else {
     return res.status(400).send({
