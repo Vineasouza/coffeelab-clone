@@ -29,6 +29,7 @@ modalCloseButton.onclick = (e) => {
 /* FLUXO DE LOGIN - VERIFICACAO, VALIDAÇÃO, REVERSÃO DA VALIDAÇÃO, LOGIN E LOGOUT */
 
 const userLogged = (tipoDeUsuario) => {
+  const tipoSalvo = localStorage.getItem("tipo");
   // Tipo 0 - admin
   // Tipo 1 - usuario
 
@@ -43,7 +44,7 @@ const userLogged = (tipoDeUsuario) => {
 
   // Alterando items do layout para exibir items pertinentes
 
-  if (tipoDeUsuario === 0) {
+  if (tipoDeUsuario === 0 || tipoSalvo === "0") {
     registrationContainer.style.display = "flex";
   } else {
     searchContainer.style.display = "flex";
@@ -120,7 +121,6 @@ const logout = () => {
   searchContainer.style.display = "none";
   registrationContainer.style.display = "none";
 };
-
 // Função de login
 const login = () => {
   // Inicializando constantes e variáveis
@@ -161,6 +161,7 @@ const login = () => {
 
       // Armazendando e-mail e token no localStorage
       localStorage.setItem("email", emailElement.value);
+      localStorage.setItem("tipo", JSON.parse(xmlhttp.responseText).tipo);
       localStorage.setItem("token", JSON.parse(xmlhttp.responseText).token);
 
       console.table(JSON.parse(xmlhttp.responseText));

@@ -1,6 +1,10 @@
 const fetchStudioGhibliFilms = () => {
   // Cria o objeto XHTTP
   var request = new XMLHttpRequest();
+  request.setRequestHeader(
+    "Authorization",
+    "Bearer " + localStorage.getItem("token")
+  );
 
   // Return a resposta como uma promise
   return new Promise(function (resolve, reject) {
@@ -46,7 +50,7 @@ const fetchFilms = async () => {
 };
 
 // Função que criará o card resultado mostrando o filme e suas informações
-const createCard = (data) => {
+const createCard = (data, isAdmin) => {
   const {
     mov_id: id,
     mov_title: filmTitle,
@@ -71,7 +75,10 @@ const createCard = (data) => {
     poster.alt = filmTitle.toLowerCase();
     poster.src = posterURL;
 
-    contentWrapper.append(poster);
+    poster.onload = () => {
+      contentWrapper.append(poster);
+      // contentWrapper.remove(poster);
+    };
   }
 
   const title = document.createElement("h1");
@@ -115,6 +122,16 @@ const createCard = (data) => {
     directorLabel,
     director
   );
+
+  if (isAdmin) {
+    const btnExcluir = document.createElement("button");
+    btnExcluir.classList.add("btn-excluir-filme");
+    btnExcluir.innerHTML = "excluir";
+
+    btnExcluir.onclick = () => exibirModalExclusao(id);
+
+    contentWrapper.append(btnExcluir);
+  }
 
   container.append(contentWrapper);
   return container;

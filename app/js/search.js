@@ -48,7 +48,6 @@ const handleSearch = () => {
   }
 
   // Pesquisa
-  console.log(films);
   const result = films.filter((film) =>
     film.mov_title.toLowerCase().includes(search.toLowerCase())
   );

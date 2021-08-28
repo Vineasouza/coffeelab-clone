@@ -124,67 +124,79 @@
             <span class="registration-sucess-message"></span>
           </div>
           <div class="registration-inputs-container">
-            <label for="text">Título</label>
-            <input
-              aria-autocomplete="none"
-              type="text"
-              class="registration-input mov_title"
-              placeholder="Título"
-              maxlength="50"
-              autofocus
-            />
-            <label for="text">Título Original</label>
-            <input
-              type="text"
-              class="registration-input mov_original_title"
-              placeholder="Título Original"
-              maxlength="50"
-            />
-            <label for="text">Título Romanizado</label>
-            <input
-              type="text"
-              class="registration-input mov_original_title_romanised"
-              placeholder="Título Romanizado"
-              maxlength="50"
-            />
-            <label for="text">Ano de Lançamento</label>
-            <input
-              type="text"
-              class="registration-input mov_release_date"
-              placeholder="Ano de Lançamento"
-              maxlength="4"
-            />
-            <span class="registration-error-date"></span>
-            <label for="text">Descrição</label>
-            <textarea
-              id="message"
-              name="message"
-              class="registration-input mov_description"
-              placeholder="Descrição"
-              maxlength="500"
-              rows="5"
-            ></textarea>
-            <label for="text">Diretor</label>
-            <input
-              type="text"
-              class="registration-input mov_director"
-              placeholder="Diretor"
-              maxlength="50"
-            />
-            <label for="text">Poster do Filme</label>
-            <input
-              type="file"
-              name="file"
-              class="registration-file-upload"
-              accept="image/png, image/jpeg, image/jpg, image/gif"
-              maxlength="50"
-              size="60"
-            />
-            <span class="registration-error-message"></span>
+            <form
+              class="registration-inputs-container"
+              autocomplete="off"
+              onsubmit="(e) => e.preventDefault()"
+            >
+              <input type="text" autocomplete="false" hidden />
+              <label for="text">Título</label>
+              <input
+                aria-autocomplete="none"
+                type="text"
+                class="registration-input mov_title"
+                placeholder="Título"
+                maxlength="50"
+                autofocus
+              />
+              <label for="text">Título Original</label>
+              <input
+                type="text"
+                class="registration-input mov_original_title"
+                placeholder="Título Original"
+                maxlength="50"
+              />
+              <label for="text">Título Romanizado</label>
+              <input
+                type="text"
+                class="registration-input mov_original_title_romanised"
+                placeholder="Título Romanizado"
+                maxlength="50"
+              />
+              <label for="text">Ano de Lançamento</label>
+              <input
+                type="text"
+                class="registration-input mov_release_date"
+                placeholder="Ano de Lançamento"
+                maxlength="4"
+              />
+              <span class="registration-error-date"></span>
+              <label for="text">Descrição</label>
+              <textarea
+                id="message"
+                name="message"
+                class="registration-input mov_description"
+                placeholder="Descrição"
+                maxlength="500"
+                rows="5"
+              ></textarea>
+              <label for="text">Diretor</label>
+              <input
+                type="text"
+                class="registration-input mov_director"
+                placeholder="Diretor"
+                maxlength="50"
+              />
+              <label for="text">Poster do Filme</label>
+              <input
+                type="file"
+                name="file"
+                class="registration-file-upload"
+                accept="image/png, image/jpeg, image/jpg, image/gif"
+                maxlength="50"
+                size="60"
+              />
+              <span class="registration-error-message"></span>
+            </form>
             <button type="submit" class="registration-button-submit">
               Enviar
             </button>
           </div>
+          <p class="registration-text-content">
+            veja todos os filmes cadastrados abaixo. <br />
+            você pode removê-los clicando em excluir no cartão
+          </p>
+          <div class="films-list-container"></div>
         </div>
 
         <img
@@ -286,6 +298,23 @@
           <div class="mensagem-sucesso-container">
             <span>Seu cadastro foi realizado com sucesso!</span>
           </div>
+        </div>
+      </div>
+    </section>
+    <section class="modal-confirmar-exclusao">
+      <div class="modal-confirmar-exclusao-content">
+        <header class="modal-confirmar-exclusao-header">
+          <p class="modal-confirmar-exclusao-title">confirmar remoção</p>
+          <button class="modal-confirmar-exclusao-close-button">x</button>
+        </header>
+        <div class="input-confirmar-exclusao">
+          <div class="mensagem-confirmar-exclusao-container">
+            <span style="text-align: center"
+              >Tem certeza que deseja remover definitivamente este filme?</span
+            >
+          </div>
+          <button class="modal-cancelar-exclusao-button">cancelar</button>
+          <button class="modal-confirmar-exclusao-button">confirmar</button>
         </div>
       </div>
     </section>
